@@ -26,11 +26,38 @@ $(function() {
                 } else {
                     $('#submit_button').hide();
                 }
+
+                $('#submit_button').click(function () {
+
+                    $('#form_section').hide();
+                    $('#submit_button').hide();
+
+
+                    $.get('add_element.php?element='+element_choice, function(data) {
+
+                        $('#data_app').html(data);
+                    });
+
+
+                    if (element_choice == "add") {
+
+
+
+
+                    } else if (element_choice == 'delete') {
+
+                    } else if (element_choice == 'modify') {
+
+                    }
+
+
+
+
+                })
             })
 
 
         } else if (initial_choice != "none") {
-
 
             $('#choice_element_form').hide();
             $('#submit_button').show();
@@ -43,11 +70,6 @@ $(function() {
 
 
     })
-
-
-
-
-
 
 
 

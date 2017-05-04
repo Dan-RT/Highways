@@ -16,9 +16,10 @@
 
         <div class="container-fullwidth container-fluid" id="style_container">
             <div class="row">
-                <div class="col-lg-offset-4 col-sm-4">
+                <div class="col-lg-offset-4 col-sm-4" id="workplace">
 
-                    <form class="form_section" action="" method="POST">
+
+                    <div id="form_section">
 
                         <div class="row" id="initial_form">
                             <h3>Que souhaitez-vous faire ?</h3>
@@ -44,12 +45,18 @@
 
                         </div>
 
-
-                        <button id="submit_button" type="submit" class="btn btn-md btn-default submit_button" value="Enter">
+                        <button id="submit_button" class="btn btn-md btn-default submit_button" >
                             <span class="glyphicon glyphicon-ok"></span> Submit
                         </button>
 
-                    </form>
+                    </div>
+
+
+                    <div id="data_app">
+
+                    </div>
+
+
                 </div>
 
             </div>

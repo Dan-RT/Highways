@@ -1,7 +1,9 @@
 
 
 
-[class*="col-"], footer {
+#workplace {
+    padding-top: 2vh;
+    padding-bottom: 2vh;
     background-color: lightskyblue;
     border: 2px solid black;
     border-radius: 6px;
@@ -9,7 +11,15 @@
     text-align: center;
 }
 
-
+/*
+[class*="col-"], footer {
+    background-color: lightskyblue;
+    border: 2px solid black;
+    border-radius: 6px;
+    line-height: 40px;
+    text-align: center;
+}
+*/
 
 
 #style_container {
