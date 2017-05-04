@@ -1,6 +1,6 @@
 $(function() {
 
-    $('#texteJQ').html('Hello world. Ce texte est affiché par jQuery.');
+    //$('#texteJQ').html('Hello world. Ce texte est affiché par jQuery.');
 
     $('#submit_button').hide();
     $('#choice_element_form').hide();

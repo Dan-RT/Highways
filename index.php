@@ -65,6 +65,7 @@
 
         <script src="js/lib/jquery.min.js"></script>
         <script src="js/index.js"></script>
+        <script src="js/add_element.js"></script>
 
     </body>
 </html>

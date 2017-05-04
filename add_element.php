@@ -154,6 +154,55 @@
                </div>
            </div>
 
+
+           <div class="row">
+               <div class="col-lg-offset-3 col-lg-3">
+                   <input type="radio" name="opened" value="1" checked> Ouvert<br>
+               </div>
+               <div class="col-lg-3">
+                   <input type="radio" name="opened" value="2"> Fermé<br>
+               </div>
+           </div>
+
+           <div id="closed_part">
+               <div class="row">
+                   <div class="col-lg-6">
+                       <h4>Causes : </h4>
+                   </div>
+                   <label><input class="input-md form-control" type="text" name="reason_closed" placeholder="Travaux"/></label>
+               </div>
+           </div>
+
+
+           <div class="row">
+               <div class="col-lg-offset-3 col-lg-3">
+                   <input type="radio" name="paid" value="1" checked> Gratuit<br>
+               </div>
+               <div class="col-lg-3">
+                   <input type="radio" name="paid" value="2"> Payant<br>
+               </div>
+           </div>
+
+
+
+            <div id="paid_part">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h4>Payant du Km : </h4>
+                    </div>
+                    <label><input class="input-md form-control" type="text" name="paid_starting_km" placeholder="Ex: 26"/></label>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h4>Jusqu'au Km : </h4>
+                    </div>
+                    <label><input class="input-md form-control" type="text" name="paid_arriving_km" placeholder="Ex: 129"/></label>
+                </div>
+            </div>
+
+
+
 <?php
            break;
    }
@@ -165,3 +214,4 @@
             </button>
 
 
+            <script src="js/add_element.js"></script>
