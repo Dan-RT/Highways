@@ -12,7 +12,6 @@ $(function() {
 
         //alert("initial choice : " + initial_choice);
 
-
         if (initial_choice == "add" || initial_choice == "delete" || initial_choice == "modify") {
 
             $('#submit_button').hide();
@@ -55,7 +54,6 @@ $(function() {
 
                 })
             })
-
 
         } else if (initial_choice != "none") {
 

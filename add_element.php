@@ -70,6 +70,7 @@
                     ?>
                     <option value="<?php echo $i; ?>"><?php echo $arriving_city['Nom_ville']; ?></option>
                     <?php
+                    $i++;
                 }
         ?>
                 </select>
