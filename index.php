@@ -22,24 +22,26 @@
 
                     <?php
 
-                    require ('highway.php');
-                    require ('highway_manager.php');
+                    require ('php/city.php');
+                    require ('php/city_manager.php');
 
-                    $autoroute = new highway();
-                    $autoroute->set_code_autoroute("A1");
-                    $autoroute->set_code_societe("1");
-                    $autoroute->set_id_registre("2");
+
+                    $ville_manager = new city_manager();
+
+                    $ville = $ville_manager->getList();
 
                     echo "TEST";
-                    echo $autoroute->code_autoroute();
-                    echo $autoroute->code_societe();
-                    echo $autoroute->id_registre();
-                    echo "TEST2";
 
-                    $db = new PDO('mysql:host=localhost;dbname=Highway_to_Hell;charset=utf8', 'root', 'root');
-                    $autoroute_manager = new highway_manager($db);
+                    if (empty($ville)) {
+                        echo "Nothing to show";
+                    } else {
+                        foreach ($ville as $element) {
+                            echo $element->nom_ville();
+                        }
+                    }
 
-                    $autoroute_manager->add($autoroute);
+                    echo "TEST";
+
 
 
                     ?>
