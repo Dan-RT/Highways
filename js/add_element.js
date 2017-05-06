@@ -27,7 +27,7 @@ $(function() {
 
                 $('#add_section').hide();
 
-                $.post('modify_db.php', {
+                $.post('send_data.php', {
                     starting_city: $('select[name=starting_city]').val(),
                     arriving_city: $('select[name=arriving_city]').val(),
                     name_highway: $('input[name=name_highway]').val()

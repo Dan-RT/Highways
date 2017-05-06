@@ -14,9 +14,35 @@
     <body>
 
 
+
         <div class="container-fullwidth container-fluid" id="style_container">
             <div class="row">
                 <div class="col-lg-offset-4 col-sm-4" id="workplace">
+
+
+                    <?php
+
+                    require ('highway.php');
+                    require ('highway_manager.php');
+
+                    $autoroute = new highway();
+                    $autoroute->set_code_autoroute("A1");
+                    $autoroute->set_code_societe("1");
+                    $autoroute->set_id_registre("2");
+
+                    echo "TEST";
+                    echo $autoroute->code_autoroute();
+                    echo $autoroute->code_societe();
+                    echo $autoroute->id_registre();
+                    echo "TEST2";
+
+                    $db = new PDO('mysql:host=localhost;dbname=Highway_to_Hell;charset=utf8', 'root', 'root');
+                    $autoroute_manager = new highway_manager($db);
+
+                    $autoroute_manager->add($autoroute);
+
+
+                    ?>
 
 
                     <div id="form_section">

@@ -34,15 +34,13 @@
             $reponse = query_database('SELECT * FROM Ville');
 
 
-            //$arriving_city = $reponse;
-            $i = 1;
 
             while ($starting_city = $reponse->fetch()) {
 ?>
-                    <option value="<?php echo $i; ?>"><?php echo $starting_city['Nom_ville']; ?></option>
+                    <option value="<?php echo $starting_city['Code_postal']; ?>"><?php echo $starting_city['Nom_ville']; ?></option>
 
     <?php
-                    $i++;
+
                  }
 
     ?>
@@ -64,15 +62,15 @@
 
         <?php
                 $reponse = query_database('SELECT * FROM Ville');
-                $i = 1;
 
                 while ($arriving_city = $reponse->fetch()) {
                     ?>
-                    <option value="<?php echo $i; ?>"><?php echo $arriving_city['Nom_ville']; ?></option>
+                    <option value="<?php echo $arriving_city['Code_postal']; ?>"><?php echo $arriving_city['Nom_ville']; ?></option>
                     <?php
-                    $i++;
+
                 }
         ?>
+
                 </select>
             </div>
         </div>
