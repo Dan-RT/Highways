@@ -58,8 +58,6 @@ class highway_manager {
             $autoroutes[] = new highway($data);
         }
 
-
-
         return $autoroutes;
     }
 

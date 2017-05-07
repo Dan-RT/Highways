@@ -14,7 +14,6 @@ class city {
     private $_code_postal;
     private $_nom_ville;
 
-
     public function hydrate(array $data) {
 
         foreach ($data as $key => $value) {

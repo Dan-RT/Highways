@@ -24,13 +24,27 @@
 
                     require ('php/city.php');
                     require ('php/city_manager.php');
-
-
-                    $ville_manager = new city_manager();
-
-                    $ville = $ville_manager->getList();
+                    require ('php/highway_exit.php');
+                    require ('php/highway_exit_manager.php');
 
                     echo "TEST";
+
+
+                    $sortie_manager = new highway_exit_manager();
+
+
+                    $sortie = new highway_exit();
+
+                    $sortie = $sortie_manager->get(1);
+
+                    echo $sortie->libelle_sortie();
+
+                    echo "TEST2";
+
+
+                    /*
+                    $ville_manager = new city_manager();
+                    $ville = $ville_manager->getList();
 
                     if (empty($ville)) {
                         echo "Nothing to show";
@@ -38,9 +52,8 @@
                         foreach ($ville as $element) {
                             echo $element->nom_ville();
                         }
-                    }
+                    } */
 
-                    echo "TEST";
 
 
 
