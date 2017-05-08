@@ -22,27 +22,61 @@
 
                     <?php
 
+
+                    require ('php/highway.php');
+                    require ('php/highway_manager.php');
                     require ('php/city.php');
                     require ('php/city_manager.php');
                     require ('php/highway_exit.php');
                     require ('php/highway_exit_manager.php');
 
+                    require ('php/portion.php');
+                    require ('php/portion_manager.php');
+
                     echo "TEST";
 
+                    $data = [
+                        'code_troncon' => 2,
+                        'duKm' => 2,
+                        'auKm' => 2,
+                        'pgDuKm' => 2,
+                        'pgAuKm' => 2,
+                        'ouvert' => true,
+                        'code_autoroute' => null,
+                        'id_registre' => null,
+                        'code_societe' => null
+                    ];
 
-                    $sortie_manager = new highway_exit_manager();
 
 
-                    $sortie = new highway_exit();
-
-                    $sortie = $sortie_manager->get(1);
-
-                    echo $sortie->libelle_sortie();
-
-                    echo "TEST2";
+                    //print_r($data);
 
 
-                    /*
+
+                    $troncon_manager = new highway_exit_manager();
+
+                    $troncon_manager->getList();
+
+
+/*
+
+
+                    $autoroute_manager = new highway_manager();
+
+                    $autoroute = $autoroute_manager->get("A2");
+
+                    echo $autoroute->code_autoroute();
+
+
+
+                    $ville_manager = new city_manager();
+
+                    $ville = $ville_manager->get(60200);
+
+                    echo $ville->nom_ville();
+
+
+
                     $ville_manager = new city_manager();
                     $ville = $ville_manager->getList();
 
@@ -53,8 +87,6 @@
                             echo $element->nom_ville();
                         }
                     } */
-
-
 
 
                     ?>

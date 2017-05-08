@@ -34,14 +34,31 @@ class highway_manager {
         $this->_db->exec('DELETE FROM Autoroute WHERE code_autoroute = '.$autoroute->code_autoroute());
     }
 
+    public function exists($info) {
+
+        $q = $this->_db->prepare('SELECT COUNT(*) FROM Autoroute WHERE code_autoroute = :code_autoroute');
+        $q->execute([':code_autoroute' => $info]);
+
+        return (bool) $q->fetchColumn();
+    }
+
     public function get($code) {
 
         if (is_string($code) && strlen($code) <= 30) {
 
-            $q = $this->_db->query('SELECT * FROM Autoroute WHERE code_autoroute = '.$code);
-            $data = $q->fetch(PDO::FETCH_ASSOC);
+            if ($this->exists($code)) {
 
-            return new highway($data);
+                echo "highway_manager get function ain't working";
+
+                $q = $this->_db->query('SELECT * FROM Autoroute WHERE code_autoroute = :code');
+                $q->execute([':code' => $code]);
+                $data = $q->fetch(PDO::FETCH_ASSOC);
+
+                return new highway($data);
+            } else {
+                echo $code . " n'existe pas dans la table.";
+                return null;
+            }
 
         } else {
             return null;

@@ -15,11 +15,18 @@ class highway_exit {
     private $_code_postal;
     private $_code_autoroute;
 
-    public function __construct() {
+
+    public function __construct(array $data = null) {
+
         $this->_code_troncon = null;
         $this->_code_postal = null;
         $this->_code_autoroute = null;
+
+        if ($data != null) {
+            $this->hydrate($data);
+        }
     }
+
 
     public function hydrate(array $data) {
 

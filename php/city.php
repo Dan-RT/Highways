@@ -14,6 +14,12 @@ class city {
     private $_code_postal;
     private $_nom_ville;
 
+    public function __construct(array $data = null) {
+        if ($data != null) {
+            $this->hydrate($data);
+        }
+    }
+
     public function hydrate(array $data) {
 
         foreach ($data as $key => $value) {
