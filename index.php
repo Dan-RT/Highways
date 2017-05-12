@@ -36,20 +36,27 @@
                     require ('php/register.php');
                     require ('php/register_manager.php');
 
+                    require ('php/company.php');
+                    require ('php/company_manager.php');
+
                     echo "TEST";
 
 
                     $data = [
-                        'id_registre' => "2",
-                        'cause_ferme' => "Travaux de voierie très très long"
+                        'id_societe' => "1",
+                        'code_societe' => "22",
+                        'nom_societe' => "STIF samer",
+                        'ca_societe' => "1000"
+
                     ];
 
-                    $tmp = new register($data);
+                    //$tmp = new company($data);
 
-                    $tmp_manager = new register_manager();
+                    $tmp_manager = new highway_manager();
 
+                    //$tmp_manager->delete($tmp);
 
-                    $tmp_manager->update($tmp);
+                    print_r($tmp_manager->getList());
 
                     echo "TEST";
 

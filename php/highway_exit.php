@@ -12,9 +12,8 @@ class highway_exit {
     private $_libelle_sortie;
     private $_numero_sortie;
     private $_code_troncon;
-    private $_code_postal;
-    private $_code_autoroute;
-
+    private $_id_city;
+    private $_id_autoroute;
 
     public function __construct(array $data = null) {
 
@@ -26,7 +25,6 @@ class highway_exit {
             $this->hydrate($data);
         }
     }
-
 
     public function hydrate(array $data) {
 
@@ -65,21 +63,21 @@ class highway_exit {
         }
     }
 
-    public function setCode_postal($code) {
+    public function setId_city($code) {
 
         $code = (int) $code;
 
         if ($code >= 1 && $code <= 10000) {
-            $this->_code_postal = $code;
+            $this->_id_city = $code;
         }
     }
 
-    public function setCode_autoroute($code) {
+    public function setId_autoroute($code) {
 
         $code = (int) $code;
 
         if ($code >= 1 && $code <= 10000) {
-            $this->_code_autoroute = $code;
+            $this->_id_autoroute = $code;
         }
     }
 
@@ -95,12 +93,12 @@ class highway_exit {
         return $this->_code_troncon;
     }
 
-    public function code_postal() {
-        return $this->_code_postal;
+    public function id_city() {
+        return $this->_id_city;
     }
 
-    public function code_autoroute() {
-        return $this->_code_autoroute;
+    public function id_autoroute() {
+        return $this->_id_autoroute;
     }
 
 }

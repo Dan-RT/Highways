@@ -21,11 +21,9 @@ class highway_manager {
 
     public function add(highway $autoroute) {
 
-        $q = $this->_db->prepare('INSERT INTO Autoroute (code_autoroute, id_registre, code_societe) VALUES(:code_autoroute, :id_registre, :code_societe)');
+        $q = $this->_db->prepare('INSERT INTO Autoroute (code_autoroute) VALUES(:code_autoroute)');
 
                 $q->bindValue(':code_autoroute', $autoroute->code_autoroute());
-                $q->bindValue(':id_registre', $autoroute->id_registre(), PDO::PARAM_INT);
-                $q->bindValue(':code_societe', $autoroute->code_societe(), PDO::PARAM_INT);
 
         $q->execute();
     }
@@ -48,13 +46,18 @@ class highway_manager {
 
             if ($this->exists($code)) {
 
-                echo "highway_manager get function ain't working";
+                //not working
+                echo "HEEELP";
+                $q = $this->_db->query('SELECT * FROM Autoroute WHERE code_autoroute ='.$code);
+                echo "HEEELP";
+                //$q->bindValue(':code', $code);
 
-                $q = $this->_db->query('SELECT * FROM Autoroute WHERE code_autoroute = :code');
-                $q->execute([':code' => $code]);
+                //$q->execute([':code' => $code]);
+
                 $data = $q->fetch(PDO::FETCH_ASSOC);
 
                 return new highway($data);
+
             } else {
                 echo $code . " n'existe pas dans la table.";
                 return null;
@@ -80,15 +83,13 @@ class highway_manager {
 
     public function update(highway $autoroute) {
 
-        $q = $this->_db->prepare('UPDATE Autoroute SET id_registre = :id_registre, code_societe = :code_societe WHERE code_autoroute = :code_autoroute');
+        $q = $this->_db->prepare('UPDATE Autoroute SET code_autoroute = :code_autoroute WHERE id_autoroute = :id_autoroute');
 
-
-        $q->bindValue(':id_registre', $autoroute->id_registre(), PDO::PARAM_INT);
-        $q->bindValue(':code_societe', $autoroute->code_societe(), PDO::PARAM_INT);
+        $q->bindValue(':code_autoroute', $autoroute->code_autoroute());
+        $q->bindValue(':id_autoroute', $autoroute->id_autoroute(), PDO::PARAM_INT);
 
         $q->execute();
     }
-
 
 
 }
