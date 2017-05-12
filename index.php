@@ -33,8 +33,36 @@
                     require ('php/portion.php');
                     require ('php/portion_manager.php');
 
+                    require ('php/register.php');
+                    require ('php/register_manager.php');
+
                     echo "TEST";
 
+
+                    $data = [
+                        'id_registre' => "2",
+                        'cause_ferme' => "Travaux de voierie très très long"
+                    ];
+
+                    $tmp = new register($data);
+
+                    $tmp_manager = new register_manager();
+
+
+                    $tmp_manager->update($tmp);
+
+                    echo "TEST";
+
+                    //$tmp_manager->delete($tmp);
+
+
+
+
+
+
+
+
+                    /*
                     $data = [
                         'code_troncon' => 2,
                         'duKm' => 2,
@@ -45,17 +73,13 @@
                         'code_autoroute' => null,
                         'id_registre' => null,
                         'code_societe' => null
-                    ];
-
-
+                    ];*/
 
                     //print_r($data);
 
 
 
-                    $troncon_manager = new highway_exit_manager();
 
-                    $troncon_manager->getList();
 
 
 /*
