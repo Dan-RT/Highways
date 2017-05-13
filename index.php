@@ -39,24 +39,30 @@
                     require ('php/company.php');
                     require ('php/company_manager.php');
 
+                    require ('php/toll.php');
+                    require ('php/toll_manager.php');
+
                     echo "TEST";
 
 
                     $data = [
-                        'id_societe' => "1",
-                        'code_societe' => "22",
-                        'nom_societe' => "STIF samer",
-                        'ca_societe' => "1000"
-
+                        'id_peage' => 2,
+                        'pgAuKm' => 3,
+                        'pgDuKm' => 10,
+                        'prix' => 1.67,
+                        'code_troncon' => null,
+                        'id_societe' => null
                     ];
 
-                    //$tmp = new company($data);
+                    //$tmp = new toll($data);
 
-                    $tmp_manager = new highway_manager();
+                    $tmp_manager = new toll_manager();
+
+                    print_r($tmp_manager->getList());
 
                     //$tmp_manager->delete($tmp);
 
-                    print_r($tmp_manager->getList());
+                    //print_r($tmp_manager->getList());
 
                     echo "TEST";
 

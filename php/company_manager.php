@@ -65,7 +65,7 @@ class company_manager {
         return (bool) $q->fetchColumn();
     }
 
-    ////not good for string
+    //not good for string
     public function get($code) {
 
         if (is_string($code) && strlen($code) <= 300) {
