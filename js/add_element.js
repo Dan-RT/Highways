@@ -13,8 +13,6 @@ $(function() {
     //Choix de l'autoroute
     if (element == "highway") {
 
-
-
         $('#add_button').click(function () {
 
             alert($('select[name=starting_city]').val() + $('select[name=arriving_city]').val() + $('input[name=name_highway]').val());
@@ -40,11 +38,7 @@ $(function() {
 
     }
 
-
-
-
     $('input[name=paid]').click(function () {
-
 
         var paid_choice = $('input[name=paid]:checked').val();
 
@@ -58,7 +52,6 @@ $(function() {
 
     $('input[name=opened]').click(function () {
 
-
         var open_choice = $('input[name=opened]:checked').val();
 
         if (open_choice == 2) {
@@ -66,6 +59,15 @@ $(function() {
         } else {
             $('#closed_part').hide();
         }
+
+    })
+
+
+    $('select[name=number_portion]').change(function () {
+
+        var nb_choice = $('select[name=number_portion]').val();
+
+        alert(nb_choice);
 
     })
 

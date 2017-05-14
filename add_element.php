@@ -1,3 +1,6 @@
+
+
+
 <?php
 
     include("database.php");
@@ -37,7 +40,7 @@
 
             while ($starting_city = $reponse->fetch()) {
 ?>
-                    <option value="<?php echo $starting_city['Code_postal']; ?>"><?php echo $starting_city['Nom_ville']; ?></option>
+                    <option value="<?php echo $starting_city['code_postal']; ?>"><?php echo $starting_city['nom_ville']; ?></option>
 
     <?php
 
@@ -47,6 +50,7 @@
                 </select>
             </div>
         </div>
+
 
 
 
@@ -65,7 +69,7 @@
 
                 while ($arriving_city = $reponse->fetch()) {
                     ?>
-                    <option value="<?php echo $arriving_city['Code_postal']; ?>"><?php echo $arriving_city['Nom_ville']; ?></option>
+                    <option value="<?php echo $arriving_city['code_postal']; ?>"><?php echo $arriving_city['nom_ville']; ?></option>
                     <?php
 
                 }
@@ -77,6 +81,21 @@
 
 
 
+        <div class="row">
+            <div class="col-lg-6">
+                <h4>Nombre de tronçon : </h4>
+            </div>
+            <div class="col-lg-6">
+                <select name="number_portion" id="number_portion">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                </select>
+            </div>
+        </div>
 
 
 
