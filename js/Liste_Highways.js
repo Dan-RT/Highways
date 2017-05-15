@@ -1,17 +1,11 @@
 $(function() {
 
     var show_hide = 0;
-    $('input').hide();
 
-
-    $('button').click(function () {
-
-        alert("bouton cliqué");
-
+    $('button[name=show_button]').click(function () {
 
         var autoroute = $(this).val();
 
-        alert(autoroute);
         show_hide++;
 
         if (show_hide % 2 == 1) {
@@ -20,14 +14,11 @@ $(function() {
 
                 $('#data_portion').html(data);
             })
+
         } else {
             $('#data_portion').empty();
         }
 
     })
-
-
-
-
 
 });

@@ -1,3 +1,15 @@
+    <?php
+
+    require ('php/portion.php');
+    require ('php/portion_manager.php');
+    $portion_m = new portion_manager();
+    $portions = $portion_m->getList();
+
+    $id_element = $_GET['id_autoroute'];
+
+    $cpt = 0;
+
+    ?>
 
 <title>Liste Tronçon</title>
 <link href="CSS/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -18,37 +30,71 @@
                 </thead>
 
                 <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>23</td>
-                    <td>Ouvert</td>
-                    <td>
-                        <button class="btn btn-xs btn-default"><span class="glyphicon glyphicon-pencil"></span></button>
-                        <button class="btn btn-xs btn-default"><span class="glyphicon glyphicon-remove"></span></button>
-                    </td>
-                </tr>
 
-                <tr>
-                    <td>2</td>
-                    <td>23</td>
-                    <td>78</td>
-                    <td>Ouvert</td>
-                    <td>
-                        <button class="btn btn-xs btn-default"><span class="glyphicon glyphicon-pencil"></span></button>
-                        <button class="btn btn-xs btn-default"><span class="glyphicon glyphicon-remove"></span></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>78</td>
-                    <td>98</td>
-                    <td>Ouvert</td>
-                    <td>
-                        <button class="btn btn-xs btn-default"><span class="glyphicon glyphicon-pencil"></span></button>
-                        <button class="btn btn-xs btn-default"><span class="glyphicon glyphicon-remove"></span></button>
-                    </td>
-                </tr>
+
+
+                    <?php
+
+                    foreach ($portions as $tmp_portion) {
+
+                        if ($tmp_portion->id_autoroute() == $id_element) {
+                            $cpt++;
+                            ?>
+                    <tr>
+                            <td>
+                                <?php
+                                echo $tmp_portion->code_troncon();
+                                ?>
+                            </td>
+                            <td>
+                                <?php
+                                echo $tmp_portion->duKm();
+                                ?>
+                            </td>
+                            <td>
+                                <?php
+                                echo $tmp_portion->auKm();
+                                ?>
+                            </td>
+                            <td>
+                                <?php
+                                if ($tmp_portion->ouvert()) {
+                                    echo "Ouvert";
+                                } else {
+                                    echo "Fermé";
+                                }
+                                ?>
+                            </td>
+                            <td>
+                                <button name="modify_portion" value="<?php echo $tmp_portion->code_troncon(); ?>" class=" btn btn-xs btn-default"><span class="glyphicon glyphicon-pencil"></span></button>
+                                <button class="btn btn-xs btn-default"><span class="glyphicon glyphicon-remove"></span></button>
+                            </td>
+                    </tr>
+
+                            <?php
+                        }
+
+                    }
+
+                    if ($cpt == 0) {
+                        ?>
+                        <tr>
+                            <td>Aucune donnée à afficher</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
+
+                        <?php
+
+
+                    }
+
+                    ?>
+                    <tr id="data_portion_modify">
+
+                    </tr>
+
                 </tbody>
             </table>
 
@@ -56,26 +102,11 @@
     </div>
 
 
-</div>
-
-
-
-<div class="container">
 
 </div>
+    <script src="js/Liste_portion.js"></script>
 
 
 
 
-<?php
 
-if ($tmp_portion->id_autoroute() == $tmp_highway->id_autoroute()) {
-    ?>
-    <td>
-        <?php
-        echo $tmp_portion->code_troncon();
-        ?>
-    </td>
-    <?php
-}
-?>

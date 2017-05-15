@@ -9,8 +9,6 @@
     require ('php/highway_exit.php');
     require ('php/highway_exit_manager.php');
 
-    require ('php/portion.php');
-    require ('php/portion_manager.php');
 
     require ('php/register.php');
     require ('php/register_manager.php');
@@ -24,8 +22,7 @@
     $autoroute_manager = new highway_manager();
     $autoroutes = $autoroute_manager->getList();
 
-    $portion_m = new portion_manager();
-    $portions = $portion_m->getList();
+
 
 
 /*
@@ -45,11 +42,6 @@
 
 
     ?>
-
-
-
-
-
 
 
 
@@ -93,7 +85,6 @@
                     ?>
 
                     <tr>
-                        <input class="id_autoroute" value="<?php echo $tmp_highway->id_autoroute(); ?>">
                         <td><?php echo $tmp_highway->code_autoroute(); ?></td>
                         <td></td>
                         <td>john@example.com</td>
