@@ -8,6 +8,7 @@
     $id_element = $_GET['id_autoroute'];
 
     $cpt = 0;
+    $id_hgw = 0;
 
     ?>
 
@@ -25,7 +26,11 @@
                     <th>Km initial</th>
                     <th>Km final</th>
                     <th>État</th>
-                    <th></th>
+                    <th>
+                        <button name="add_portion" class="btn btn-xs btn-default">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </th>
                 </tr>
                 </thead>
 
@@ -37,10 +42,15 @@
 
                     foreach ($portions as $tmp_portion) {
 
+                        $id_hgw = $tmp_portion->id_autoroute();
+
+
                         if ($tmp_portion->id_autoroute() == $id_element) {
                             $cpt++;
+
                             ?>
                     <tr>
+
                             <td>
                                 <?php
                                 echo $tmp_portion->code_troncon();
@@ -66,15 +76,23 @@
                                 ?>
                             </td>
                             <td>
+                                <input name="id_autoroute_hidden" class="hidden" value="<?php echo $id_hgw; ?>">
                                 <button name="modify_portion" value="<?php echo $tmp_portion->code_troncon(); ?>" class=" btn btn-xs btn-default"><span class="glyphicon glyphicon-pencil"></span></button>
                                 <button class="btn btn-xs btn-default"><span class="glyphicon glyphicon-remove"></span></button>
                             </td>
                     </tr>
 
                             <?php
+
+
                         }
 
                     }
+                            ?>
+
+
+                    <?php
+
 
                     if ($cpt == 0) {
                         ?>
@@ -94,9 +112,9 @@
                     <tr id="data_portion_modify">
 
                     </tr>
-
                 </tbody>
             </table>
+
 
         </div>
     </div>

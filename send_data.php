@@ -9,14 +9,15 @@
 
 
 
+    echo " id_autoroute : " . $_POST['id_autoroute'];
     /*
-    echo "Type : " . $_POST['type'];
-    echo " Action : " . $_POST['action'];
-    echo " Code_troncon : " . $_POST['code_troncon'];
-    echo " duKM : " . $_POST['duKm'];
-    echo " auKM : " . $_POST['auKm'];
-    echo " Ouvert : " . $_POST['ouvert'];
-*/
+        echo "Type : " . $_POST['type'];
+        echo " Action : " . $_POST['action'];
+        echo " Code_troncon : " . $_POST['code_troncon'];
+        echo " duKM : " . $_POST['duKm'];
+        echo " auKM : " . $_POST['auKm'];
+        echo " Ouvert : " . $_POST['ouvert'];*/
+
 
 
     switch ($_POST['type']) {
@@ -29,24 +30,40 @@
                 $data = ([
                     "code_troncon" => $_POST['code_troncon'],
                     "duKM" => $_POST['duKm'],
-                    "auKM" => $_POST['auKm']
+                    "auKM" => $_POST['auKm'],
+                    "ouvert" => $_POST['ouvert']
                 ]);
 
                 $tmp_troncon = new portion($data);
-
-
-                /*echo " Code_troncon : " . $tmp_troncon->code_troncon();
-                echo " duKm : " . $tmp_troncon->duKm();
-                echo " auKm : " . $tmp_troncon->auKm();*/
+                $tmp_troncon_m = new portion_manager();
+                $tmp_troncon_m->update($tmp_troncon);
             ?>
                 <script>
                     alert("Les données ont été mis à jour");
                     window.location.replace("Liste_highways.php");
                 </script>
                 <?php
-                $tmp_troncon_m = new portion_manager();
-                $tmp_troncon_m->update($tmp_troncon);
 
+
+            } else if ($_POST['action'] == "add") {
+
+                $data = ([
+                    "duKM" => $_POST['duKm'],
+                    "auKM" => $_POST['auKm'],
+                    "ouvert" => $_POST['ouvert'],
+                    "id_autoroute" => $_POST['id_autoroute']
+                ]);
+
+                echo "id : " . $tmp_troncon->id_autoroute();
+                $tmp_troncon = new portion($data);
+                $tmp_troncon_m = new portion_manager();
+                //$tmp_troncon_m->add($tmp_troncon);
+                ?>
+                <script>
+                    //alert("Les données ont été mis à jour");
+                    //window.location.replace("Liste_highways.php");
+                </script>
+                <?php
             }
 
 
