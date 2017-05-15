@@ -40,17 +40,11 @@ $(function() {
 
                     if (element_choice == "add") {
 
-
-
-
                     } else if (element_choice == 'delete') {
 
                     } else if (element_choice == 'modify') {
 
                     }
-
-
-
 
                 })
             })
