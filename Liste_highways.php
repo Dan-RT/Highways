@@ -99,7 +99,7 @@
                         <td>john@example.com</td>
 
                         <td>
-                            <button id="<?php echo "show_button" . $tmp_highway->id_autoroute();  ?>" value="<?php echo $tmp_highway->id_autoroute(); ?>" class="btn btn-xs btn-default"><span
+                            <button name="show_button" value="<?php echo $tmp_highway->id_autoroute(); ?>" class="btn btn-xs btn-default"><span
                                     class="glyphicon glyphicon-align-left"></span></button>
                             <button class="btn btn-xs btn-default"><span class="glyphicon glyphicon-pencil"></span>
                             </button>
