@@ -43,7 +43,19 @@
                     require ('php/toll_manager.php');
 
 
+                    $data = ([
+                        "libelle_sortie" => "test",
+                        "code_troncon" => 1,
+                        "code_postal" => 75001,
+                        "nom_ville" => "Paris",
+                        "id_autoroute" => 1
+                    ]);
 
+                    $tmp = new highway_exit($data);
+                    $tmp_manager = new highway_exit_manager();
+
+                    print_r($tmp);
+                    $tmp_manager->add($tmp);
 
                     ?>
 

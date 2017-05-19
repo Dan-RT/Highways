@@ -18,6 +18,9 @@
     echo " ouvert : " . $_POST['ouvert'];
 
 
+
+
+
     switch ($_POST['type']) {
 
         case "portion":
