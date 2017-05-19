@@ -1,16 +1,19 @@
 
 $(function() {
 
-    $('#code_troncon_hidden').hide();
 
+    $('#code_troncon_hidden').hide();
 
     $('button[name=submit_modif_portion]').click(function () {
 
-        alert($('#id_autoroute_hidden_2').val());
+        //alert($('#id_autoroute_hidden_2').val());
         if ($('#modify_duKm').val() == "" || $('#modify_auKm').val() == "") {
             alert("Tous les champs doivent être renseignés.");
         } else {
 
+            var tmp_ouvert = $('input[name=optradio]:checked').val();
+
+            alert(tmp_ouvert);
             if ($('#code_troncon_hidden').val() == 'X') {
                 //ajout d'un élément
                 $.post('send_data.php', {
@@ -19,28 +22,29 @@ $(function() {
                     id_autoroute: $('#id_autoroute_hidden_2').val(),
                     duKm: $('#modify_duKm').val(),
                     auKm: $('#modify_auKm').val(),
-                    ouvert: $('input:radio').val()
+                    ouvert: tmp_ouvert
                 }, function(data) {
                     $('#data_portion_modify').html(data);
                 });
             } else {
+                var tmp_code = $('#code_troncon_hidden').val();
+                var tmp_ouvert = $('input[name=optradio]:checked').val();
+
+                alert(tmp_ouvert);
                 //modif d'un élément
                 $.post('send_data.php', {
+                    code_troncon: tmp_code,
                     type: 'portion',
                     action: 'modify',
-                    code_troncon: $('#code_troncon_hidden').val(),
                     duKm: $('#modify_duKm').val(),
                     auKm: $('#modify_auKm').val(),
-                    ouvert: $('input:radio').val()
+                    ouvert: tmp_ouvert
                 }, function(data) {
                     $('#data_portion_modify').html(data);
                 });
             }
-
         }
     })
-
-
 
 });
 

@@ -14,8 +14,10 @@
 
 <title>Liste Tronçon</title>
 <link href="CSS/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="js/Liste_portion.js"></script>
 
-<div class="container">
+
+    <div class="container">
     <div class="row">
         <div class="col-lg-offset-1 col-lg-10">
 
@@ -78,21 +80,14 @@
                             <td>
                                 <input name="id_autoroute_hidden" class="hidden" value="<?php echo $id_hgw; ?>">
                                 <button name="modify_portion" value="<?php echo $tmp_portion->code_troncon(); ?>" class=" btn btn-xs btn-default"><span class="glyphicon glyphicon-pencil"></span></button>
-                                <button class="btn btn-xs btn-default"><span class="glyphicon glyphicon-remove"></span></button>
+                                <button name="remove_portion" value="<?php echo $tmp_portion->code_troncon(); ?>" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-remove"></span></button>
                             </td>
                     </tr>
 
                             <?php
 
-
                         }
-
                     }
-                            ?>
-
-
-                    <?php
-
 
                     if ($cpt == 0) {
                         ?>
@@ -102,10 +97,7 @@
                             <td></td>
                         </tr>
 
-
                         <?php
-
-
                     }
 
                     ?>
@@ -122,7 +114,8 @@
 
 
 </div>
-    <script src="js/Liste_portion.js"></script>
+
+
 
 
 

@@ -2,6 +2,11 @@ $(function() {
 
     var show_hide = 0;
 
+    $('button[name=remove_highway]').click(function () {
+        alert("Remove");
+    });
+
+
     $('button[name=show_button]').click(function () {
 
         var autoroute = $(this).val();
@@ -19,6 +24,6 @@ $(function() {
             $('#data_portion').empty();
         }
 
-    })
+    });
 
 });

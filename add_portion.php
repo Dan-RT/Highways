@@ -2,7 +2,6 @@
 
     $id_autoroute = $_GET['id_autoroute'];
 
-    echo $id_autoroute;
     ?>
 
 

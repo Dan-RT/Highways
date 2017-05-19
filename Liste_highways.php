@@ -22,25 +22,6 @@
     $autoroute_manager = new highway_manager();
     $autoroutes = $autoroute_manager->getList();
 
-
-
-
-/*
-    $data = [
-        "duKm" => "10",
-        "auKm" => "12",
-        "ouvert" => true,
-        "id_autoroute" => 1
-    ];
-
-    $portion = new portion($data);
-    echo $portion->ouvert();
-    $portion_m = new portion_manager();
-
-    $portion_m->add($portion);
-*/
-
-
     ?>
 
 
@@ -94,7 +75,7 @@
                                     class="glyphicon glyphicon-align-left"></span></button>
                             <button class="btn btn-xs btn-default"><span class="glyphicon glyphicon-pencil"></span>
                             </button>
-                            <button class="btn btn-xs btn-default"><span class="glyphicon glyphicon-remove"></span>
+                            <button name="remove_highway" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-remove"></span>
                             </button>
                         </td>
 
@@ -122,7 +103,6 @@
 
     <script src="js/lib/jquery.min.js"></script>
     <script src="js/Liste_Highways.js"></script>
-    <script src="js/add_element.js"></script>
 
     </body>
 </html>
