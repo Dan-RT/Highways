@@ -7,11 +7,18 @@
     require ('php/portion.php');
     require ('php/portion_manager.php');
 
-
     require ('php/highway_exit.php');
     require ('php/highway_exit_manager.php');
 
+
+
+    echo " name_autoroute : " . $_POST['name_autoroute'];
+    echo " Type : " . $_POST['type'];
+    echo " Action : " . $_POST['action'];
     echo " id_autoroute : " . $_POST['id_autoroute'];
+
+
+    /*
     echo " Code tronçon : " . $_POST['code_troncon'];
     echo " Type : " . $_POST['type'];
     echo " Action : " . $_POST['action'];
@@ -19,7 +26,7 @@
     echo " auKm : " . $_POST['auKm'];
     echo " ouvert : " . $_POST['ouvert'];
     echo " starting_city : " . $_POST['starting_city'];
-    echo " arriving_city : " . $_POST['arriving_city'];
+    echo " arriving_city : " . $_POST['arriving_city'];*/
 
 
     switch ($_POST['type']) {
@@ -177,8 +184,66 @@
 
 
             break;
-        case 1:
-            echo "i égal 1";
+        case "highway":
+
+            if ($_POST['action'] == "modify") {
+
+
+                echo " name_autoroute : " . $_POST['name_autoroute'];
+                echo " Type : " . $_POST['type'];
+                echo " Action : " . $_POST['action'];
+                echo " id_autoroute : " . $_POST['id_autoroute'];
+
+
+                $data = ([
+                    "code_autoroute" => $_POST['name_autoroute'],
+                    "id_autoroute" => $_POST['id_autoroute']
+                ]);
+
+                $tmp_highway = new highway($data);
+                $highway_m = new highway_manager();
+
+                $highway_m->update($tmp_highway);
+    ?>
+                <script>
+                    alert("Les données ont été mis à jour");
+                    window.location.replace("Liste_highways.php");
+                </script>
+    <?php
+            } else if ($_POST['action'] == "add") {
+
+                $data = ([
+                    "code_autoroute" => $_POST['name_autoroute']
+                ]);
+
+                $tmp_highway = new highway($data);
+                $highway_m = new highway_manager();
+
+                $highway_m->add($tmp_highway);
+                ?>
+                <script>
+                    alert("Les données ont été mis à jour");
+                    window.location.replace("Liste_highways.php");
+                </script>
+                <?php
+
+            } else if ($_POST['action'] == "remove") {
+                $data = ([
+                    "id_autoroute" => $_POST['id_autoroute']
+                ]);
+
+                $tmp = new highway($data);
+                $tmp_highway_m = new highway_manager();
+                $tmp_highway_m->delete($tmp);
+
+                ?>
+                <script>
+                    alert("Les données ont été mis à jour");
+                    window.location.replace("Liste_highways.php");
+                </script>
+                <?php
+            }
+
             break;
         case 2:
             echo "i égal 2";
@@ -187,3 +252,6 @@
 
 
     ?>
+
+
+

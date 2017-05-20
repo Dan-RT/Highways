@@ -23,9 +23,6 @@ $(function() {
 
             if ($('#code_troncon_hidden').val() == 'X') {
 
-                alert("adding portion");
-                alert("Starting city : " + starting_city);
-                alert("Arriving city : " + arriving_city);
 
                 //ajout d'un élément
                 $.post('send_data.php', {

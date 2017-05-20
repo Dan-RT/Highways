@@ -51,7 +51,12 @@
                     <th>Nom Autoroute</th>
                     <th></th>
                     <th></th>
-                    <th></th>
+                    <th>
+                        <button name="add_highway" class="btn btn-xs btn-default">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </th>
+
                 </tr>
             </thead>
 
@@ -67,16 +72,26 @@
 
                     <tr>
                         <td><?php echo $tmp_highway->code_autoroute(); ?></td>
-                        <td></td>
+                        <td>
+                            <input id="modify_name_highway_<?php echo $tmp_highway->id_autoroute(); ?>" value="<?php echo $tmp_highway->code_autoroute(); ?>">
+                        </td>
                         <td></td>
 
                         <td>
-                            <button name="show_button" value="<?php echo $tmp_highway->id_autoroute(); ?>" class="btn btn-xs btn-default"><span
-                                    class="glyphicon glyphicon-align-left"></span></button>
-                            <button class="btn btn-xs btn-default"><span class="glyphicon glyphicon-pencil"></span>
+                            <button name="show_button" value="<?php echo $tmp_highway->id_autoroute(); ?>" class="btn btn-xs btn-default">
+                                <span class="glyphicon glyphicon-align-left"></span>
                             </button>
-                            <button name="remove_highway" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-remove"></span>
+
+                            <button name="modify_highway" value="<?php echo $tmp_highway->id_autoroute(); ?>" class="btn btn-xs btn-default">
+                                <span class="glyphicon glyphicon-pencil"></span>
                             </button>
+
+                            <button name="remove_highway" value="<?php echo $tmp_highway->id_autoroute(); ?>" class="btn btn-xs btn-default">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </button>
+
+                            <button id="submit_modif_highway_<?php echo $tmp_highway->id_autoroute(); ?>" class="btn btn-xs btn-default button_submit"><span class="glyphicon glyphicon-ok"></span></button>
+
                         </td>
 
                     </tr>
@@ -97,6 +112,7 @@
     <div id="data_portion">
 
     </div>
+
 
 
 

@@ -29,7 +29,7 @@ class highway_manager {
     }
 
     public function delete(highway $autoroute) {
-        $this->_db->exec('DELETE FROM Autoroute WHERE code_autoroute = '.$autoroute->code_autoroute());
+        $this->_db->exec('DELETE FROM Autoroute WHERE id_autoroute = '.$autoroute->id_autoroute());
     }
 
     public function exists($info) {
