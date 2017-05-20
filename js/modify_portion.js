@@ -6,28 +6,7 @@ $(function() {
 
     $('button[name=submit_modif_portion]').click(function () {
 
-
-        if ($('select[name=starting_city]').val() == 0 || $('select[name=arriving_city]').val() == 0 || $('input[name=name_highway]').val() == "") {
-            alert("Tous les champs doivent être renseignés.");
-        } else if ($('select[name=starting_city]').val() == $('select[name=arriving_city]').val()) {
-            alert("Une même ville ne peut pas être le départ et l'arrivée d'une même autoroute.");
-        } else {
-
-            $('#add_section').hide();
-
-            $.post('send_data.php', {
-                starting_city: $('select[name=starting_city]').val(),
-                arriving_city: $('select[name=arriving_city]').val(),
-                name_highway: $('input[name=name_highway]').val()
-            }, function(data) {
-                $('#data_app').html(data);
-            });
-
-        }
-
-
-
-
+        //alert("submit");
 
         //alert($('#id_autoroute_hidden_2').val());
         if ($('#modify_duKm').val() == "" || $('#modify_auKm').val() == "" || $('select[name=starting_city]').val() == 0 || $('select[name=arriving_city]').val() == 0) {
@@ -37,8 +16,13 @@ $(function() {
         } else {
 
             var tmp_ouvert = $('input[name=optradio]:checked').val();
+            var starting_city = $('select[name=starting_city]').val();
+            var arriving_city = $('select[name=arriving_city]').val();
 
-            alert(tmp_ouvert);
+
+            //alert("Starting city : " + starting_city);
+            //alert("Arriving city : " + arriving_city);
+
             if ($('#code_troncon_hidden').val() == 'X') {
                 //ajout d'un élément
                 $.post('send_data.php', {
@@ -47,9 +31,7 @@ $(function() {
                     id_autoroute: $('#id_autoroute_hidden_2').val(),
                     duKm: $('#modify_duKm').val(),
                     auKm: $('#modify_auKm').val(),
-                    ouvert: tmp_ouvert,
-                    starting_city: $('select[name=starting_city]').val(),
-                    arriving_city: $('select[name=arriving_city]').val()
+                    ouvert: tmp_ouvert
                 }, function(data) {
                     $('#data_portion_modify').html(data);
                 });
@@ -65,7 +47,9 @@ $(function() {
                     action: 'modify',
                     duKm: $('#modify_duKm').val(),
                     auKm: $('#modify_auKm').val(),
-                    ouvert: tmp_ouvert
+                    ouvert: tmp_ouvert,
+                    starting_city: starting_city,
+                    arriving_city: arriving_city
                 }, function(data) {
                     $('#data_portion_modify').html(data);
                 });

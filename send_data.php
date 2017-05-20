@@ -8,6 +8,8 @@
     require ('php/portion_manager.php');
 
 
+    require ('php/highway_exit.php');
+    require ('php/highway_exit_manager.php');
 
     echo " id_autoroute : " . $_POST['id_autoroute'];
     echo " Code tronçon : " . $_POST['code_troncon'];
@@ -18,9 +20,6 @@
     echo " ouvert : " . $_POST['ouvert'];
     echo " starting_city : " . $_POST['starting_city'];
     echo " arriving_city : " . $_POST['arriving_city'];
-
-
-
 
 
     switch ($_POST['type']) {
@@ -39,10 +38,39 @@
 
                 $tmp_troncon = new portion($data);
                 $tmp_troncon_m = new portion_manager();
+                $tmp_troncon_m->update($tmp_troncon);
 
-                //echo "Code_troncon : " . $tmp_troncon->code_troncon();
 
-                //$tmp_troncon_m->update($tmp_troncon);
+                /*     Update villes     */
+
+                $city_m = new highway_exit_manager();
+                $cities = $city_m->getList();
+
+                foreach ($cities as $tmp) {
+                    if ($tmp->code_troncon() == $_POST['code_troncon']) {
+                        $tmp->setCode_troncon(0);
+                        $city_m->update($tmp_city);
+                    }
+                }
+
+                $tmp_city = $city_m->get($_POST['starting_city']);
+                $tmp_city->setCode_troncon($_POST['code_troncon']);
+
+                echo "\n\nsortie : " . $tmp_city->numero_sortie();
+                echo " troncon : " . $tmp_city->code_troncon();
+
+                $city_m->update($tmp_city);
+
+                $tmp_city = $city_m->get($_POST['arriving_city']);
+                $tmp_city->setCode_troncon($_POST['code_troncon']);
+
+                echo "\n\nsortie : " . $tmp_city->numero_sortie();
+                echo " troncon : " . $tmp_city->code_troncon();
+
+                $city_m->update($tmp_city);
+
+
+
             ?>
                 <script>
                     //alert("Les données ont été mis à jour");

@@ -5,12 +5,15 @@
 
     require ('php/highway_exit.php');
     require ('php/highway_exit_manager.php');
+
     $portion_m = new portion_manager();
     $portions = $portion_m->getList();
 
 
     $city_m = new highway_exit_manager();
     $cities = $city_m->getList();
+
+
 
     $id_element = $_GET['id_autoroute'];
 

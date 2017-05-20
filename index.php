@@ -45,9 +45,9 @@
 
                     $data = ([
                         "libelle_sortie" => "test",
-                        "code_troncon" => 2,
+                        "code_troncon" => 1,
                         "code_postal" => 0,
-                        "nom_ville" => "Marseille",
+                        "nom_ville" => "Paris",
                         "id_autoroute" => 1
                     ]);
 
@@ -55,7 +55,7 @@
                     $tmp_manager = new highway_exit_manager();
 
                     print_r($tmp);
-                    $tmp_manager->add($tmp);
+                    $tmp_manager->update($tmp);
 
                     ?>
 
