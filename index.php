@@ -45,9 +45,9 @@
 
                     $data = ([
                         "libelle_sortie" => "test",
-                        "code_troncon" => 1,
-                        "code_postal" => 75001,
-                        "nom_ville" => "Paris",
+                        "code_troncon" => 2,
+                        "code_postal" => 0,
+                        "nom_ville" => "Marseille",
                         "id_autoroute" => 1
                     ]);
 

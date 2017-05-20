@@ -16,6 +16,8 @@
     echo " duKm : " . $_POST['duKm'];
     echo " auKm : " . $_POST['auKm'];
     echo " ouvert : " . $_POST['ouvert'];
+    echo " starting_city : " . $_POST['starting_city'];
+    echo " arriving_city : " . $_POST['arriving_city'];
 
 
 
@@ -40,11 +42,11 @@
 
                 //echo "Code_troncon : " . $tmp_troncon->code_troncon();
 
-                $tmp_troncon_m->update($tmp_troncon);
+                //$tmp_troncon_m->update($tmp_troncon);
             ?>
                 <script>
-                    alert("Les données ont été mis à jour");
-                    window.location.replace("Liste_highways.php");
+                    //alert("Les données ont été mis à jour");
+                    //window.location.replace("Liste_highways.php");
                 </script>
                 <?php
 

@@ -1,9 +1,24 @@
 $(function() {
 
 
+
+    $('button[name=show_detail_portion]').click(function () {
+/*
+        var code_portion = $(this).val();
+        alert("test");
+        //data_cities
+        $.get('liste_cities.php?id_portion='+code_portion, function(data) {
+            alert("get test");
+            $('#data_cities_'+code_portion).html(data);
+        });
+        */
+    });
+
     var show_hide_portion = 0;
 
     $('button[name=remove_portion]').click(function () {
+
+        //alert("chatte");
 
         var portion = $(this).val();
 
@@ -21,6 +36,7 @@ $(function() {
 
     });
 
+
     $('button[name=modify_portion]').click(function () {
 
          var portion = $(this).val();
@@ -31,7 +47,7 @@ $(function() {
 
              $.get('modify_portion.php?id_portion='+portion, function(data) {
                 $('#data_portion_modify').html(data);
-             })
+             });
 
          } else {
              //alert("Hide");
