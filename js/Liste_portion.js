@@ -1,6 +1,7 @@
 $(function() {
 
 
+    //alert("test");
 
     $('button[name=show_detail_portion]').click(function () {
 /*
@@ -39,20 +40,23 @@ $(function() {
 
     $('button[name=modify_portion]').click(function () {
 
-         var portion = $(this).val();
+        var portion = $(this).val();
+        var autoroute = $('input[name=id_autoroute_hidden]').val();
+        //alert("modify");
+        //alert("Autoroute : " + autoroute);
 
-         show_hide_portion++;
+        show_hide_portion++;
 
-         if (show_hide_portion % 2 == 1) {
+        if (show_hide_portion % 2 == 1) {
 
-             $.get('modify_portion.php?id_portion='+portion, function(data) {
-                $('#data_portion_modify').html(data);
-             });
+         $.get('modify_portion.php?id_portion='+portion+'&id_autoroute='+autoroute, function(data) {
+            $('#data_portion_modify').html(data);
+         });
 
-         } else {
-             //alert("Hide");
-             $('#data_portion_modify').empty();
-         }
+        } else {
+         //alert("Hide");
+         $('#data_portion_modify').empty();
+        }
      });
 
     $('button[name=add_portion]').click(function () {

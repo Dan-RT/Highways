@@ -13,8 +13,6 @@
     $city_m = new highway_exit_manager();
     $cities = $city_m->getList();
 
-
-
     $id_element = $_GET['id_autoroute'];
 
     $cpt = 0;
@@ -56,7 +54,6 @@
 
                         $id_hgw = $tmp_portion->id_autoroute();
 
-
                         if ($tmp_portion->id_autoroute() == $id_element) {
                             $cpt++;
 
@@ -89,7 +86,7 @@
 
                                  $cpt = 0;
                                  foreach ($cities as $tmp_city) {
-                                     if ($tmp_city->code_troncon() == $tmp_portion->code_troncon()) {
+                                     if ($tmp_city->code_troncon_arrivee() == $tmp_portion->code_troncon()) {
                                          if ($cpt != $flag) {
                                              echo $tmp_city->nom_ville();
                                          }

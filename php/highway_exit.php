@@ -12,6 +12,7 @@ class highway_exit {
     private $_libelle_sortie;
     private $_numero_sortie;
     private $_code_troncon;
+    private $_code_troncon_arrivee;
     private $_code_postal;
     private $_nom_ville;
     private $_id_autoroute;
@@ -64,6 +65,16 @@ class highway_exit {
         }
     }
 
+    public function setCode_troncon_arrivee($code) {
+
+        $code = (int) $code;
+
+        if ($code >= 0 && $code <= 10000) {
+            $this->_code_troncon_arrivee = $code;
+        }
+    }
+
+
     public function setId_autoroute($code) {
 
         $code = (int) $code;
@@ -83,6 +94,10 @@ class highway_exit {
 
     public function code_troncon() {
         return $this->_code_troncon;
+    }
+
+    public function code_troncon_arrivee() {
+        return $this->_code_troncon_arrivee;
     }
 
     public function id_autoroute() {

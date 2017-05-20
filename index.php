@@ -44,18 +44,18 @@
 
 
                     $data = ([
-                        "libelle_sortie" => "test",
-                        "code_troncon" => 1,
-                        "code_postal" => 0,
-                        "nom_ville" => "Paris",
-                        "id_autoroute" => 1
+                        "code_troncon" => 0,
+                        "code_troncon_arrivee" => 2,
+                        "code_postal" => 67073,
+                        "nom_ville" => "Strasbourg",
+                        "id_autoroute" => 5
                     ]);
 
                     $tmp = new highway_exit($data);
                     $tmp_manager = new highway_exit_manager();
-
                     print_r($tmp);
-                    $tmp_manager->update($tmp);
+
+                    $tmp_manager->add($tmp);
 
                     ?>
 

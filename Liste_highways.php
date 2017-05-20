@@ -49,8 +49,8 @@
             <thead>
                 <tr>
                     <th>Nom Autoroute</th>
-                    <th>Départ</th>
-                    <th>Arrivée</th>
+                    <th></th>
+                    <th></th>
                     <th></th>
                 </tr>
             </thead>
@@ -68,7 +68,7 @@
                     <tr>
                         <td><?php echo $tmp_highway->code_autoroute(); ?></td>
                         <td></td>
-                        <td>john@example.com</td>
+                        <td></td>
 
                         <td>
                             <button name="show_button" value="<?php echo $tmp_highway->id_autoroute(); ?>" class="btn btn-xs btn-default"><span

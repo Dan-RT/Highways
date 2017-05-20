@@ -66,7 +66,7 @@
                 $city_m->update($tmp_city);
 
                 $tmp_city = $city_m->get($_POST['arriving_city']);
-                $tmp_city->setCode_troncon($_POST['code_troncon']);
+                $tmp_city->setCode_troncon_arrivee($_POST['code_troncon']);
 
                 //echo "\n\nsortie : " . $tmp_city->numero_sortie();
                 //echo " troncon : " . $tmp_city->code_troncon();
