@@ -47,25 +47,29 @@
                 $cities = $city_m->getList();
 
                 foreach ($cities as $tmp) {
-                    if ($tmp->code_troncon() == $_POST['code_troncon']) {
+                    echo "\ncode troncon : ".$tmp->code_troncon();
+                    $code_tmp = $tmp->code_troncon();
+                    if ($code_tmp == $_POST['code_troncon']) {
+                        echo "\ndata";
                         $tmp->setCode_troncon(0);
-                        $city_m->update($tmp_city);
+                        echo "test";
+                        $city_m->update($tmp);
                     }
                 }
 
                 $tmp_city = $city_m->get($_POST['starting_city']);
                 $tmp_city->setCode_troncon($_POST['code_troncon']);
 
-                echo "\n\nsortie : " . $tmp_city->numero_sortie();
-                echo " troncon : " . $tmp_city->code_troncon();
+                //echo "\n\nsortie : " . $tmp_city->numero_sortie();
+                //echo " troncon : " . $tmp_city->code_troncon();
 
                 $city_m->update($tmp_city);
 
                 $tmp_city = $city_m->get($_POST['arriving_city']);
                 $tmp_city->setCode_troncon($_POST['code_troncon']);
 
-                echo "\n\nsortie : " . $tmp_city->numero_sortie();
-                echo " troncon : " . $tmp_city->code_troncon();
+                //echo "\n\nsortie : " . $tmp_city->numero_sortie();
+                //echo " troncon : " . $tmp_city->code_troncon();
 
                 $city_m->update($tmp_city);
 
@@ -73,8 +77,8 @@
 
             ?>
                 <script>
-                    //alert("Les données ont été mis à jour");
-                    //window.location.replace("Liste_highways.php");
+                    alert("Les données ont été mis à jour");
+                    window.location.replace("Liste_highways.php");
                 </script>
                 <?php
 

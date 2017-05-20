@@ -59,7 +59,7 @@ class highway_exit {
 
         $code = (int) $code;
 
-        if ($code >= 1 && $code <= 10000) {
+        if ($code >= 0 && $code <= 10000) {
             $this->_code_troncon = $code;
         }
     }
