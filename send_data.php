@@ -4,6 +4,7 @@
 
     require ('php/highway.php');
     require ('php/highway_manager.php');
+
     require ('php/portion.php');
     require ('php/portion_manager.php');
 
@@ -11,22 +12,32 @@
     require ('php/highway_exit_manager.php');
 
 
+    require ('php/company.php');
+    require ('php/company_manager.php');
 
-    echo " name_autoroute : " . $_POST['name_autoroute'];
+    require ('php/toll.php');
+    require ('php/toll_manager.php');
+
+
+
+    /*echo " name_autoroute : " . $_POST['name_autoroute'];
     echo " Type : " . $_POST['type'];
     echo " Action : " . $_POST['action'];
-    echo " id_autoroute : " . $_POST['id_autoroute'];
+    echo " id_autoroute : " . $_POST['id_autoroute'];*/
 
 
-    /*
+
     echo " Code tronçon : " . $_POST['code_troncon'];
     echo " Type : " . $_POST['type'];
     echo " Action : " . $_POST['action'];
     echo " duKm : " . $_POST['duKm'];
     echo " auKm : " . $_POST['auKm'];
     echo " ouvert : " . $_POST['ouvert'];
+    echo " payant : " . $_POST['payant'];
+    echo " prix : " . $_POST['price'];
+    echo " company : " . $_POST['company'];
     echo " starting_city : " . $_POST['starting_city'];
-    echo " arriving_city : " . $_POST['arriving_city'];*/
+    echo " arriving_city : " . $_POST['arriving_city'];
 
 
     switch ($_POST['type']) {
@@ -39,7 +50,8 @@
                     "code_troncon" => $_POST['code_troncon'],
                     "duKM" => $_POST['duKm'],
                     "auKM" => $_POST['auKm'],
-                    "ouvert" => $_POST['ouvert']
+                    "ouvert" => $_POST['ouvert'],
+                    "payant" => $_POST['payant']
                 ]);
 
 
@@ -84,6 +96,24 @@
                 $city_m->update($tmp_city);
 
 
+                /*     Update Toll     */
+
+                if ($_POST['payant'] != 0) {
+                    $data_2 = ([
+                        "code_troncon" => $_POST['code_troncon'],
+                        "id_societe" => $_POST['company']
+                        //"prix" => $_POST['price'],
+                    ]);
+                    $peage = new toll($data_2);
+                    $peage_m = new toll_manager();
+                    $peage_m->add($peage);
+                } else {
+                    $peage_m = new toll_manager();
+                    $peage = $peage_m->get_by_troncon($_POST['code_troncon']);
+                    print_r($peage);
+                    $peage_m->delete($peage);
+                }
+
 
             ?>
                 <script>
@@ -100,6 +130,7 @@
                     "duKM" => $_POST['duKm'],
                     "auKM" => $_POST['auKm'],
                     "ouvert" => $_POST['ouvert'],
+                    "payant" => $_POST['payant'],
                     "id_autoroute" => $_POST['id_autoroute']
                 ]);
 
@@ -119,7 +150,7 @@
                 $cities = $city_m->getList();
 
                 foreach ($cities as $tmp) {
-                    echo "\ncode troncon : ".$tmp->code_troncon();
+                    //echo "\ncode troncon : ".$tmp->code_troncon();
                     $code_tmp = $tmp->code_troncon();
                     if ($code_tmp == $_POST['code_troncon']) {
                         $tmp->setCode_troncon(0);
@@ -128,14 +159,13 @@
                 }
 
                 foreach ($cities as $tmp) {
-                    echo "\ncode troncon arrivee : ".$tmp->code_troncon_arrivee();
+                    //echo "\ncode troncon arrivee : ".$tmp->code_troncon_arrivee();
                     $code_tmp = $tmp->code_troncon_arrivee();
                     if ($code_tmp == $_POST['code_troncon']) {
                         $tmp->setCode_troncon_arrivee(0);
                         $city_m->update($tmp);
                     }
                 }
-
 
 
                 $tmp_city = $city_m->get($_POST['starting_city']);
@@ -152,6 +182,21 @@
                 echo " code troncon (arriving) : " . $tmp_city->code_troncon_arrivee();
 
                 $city_m->update($tmp_city);
+
+
+                /*     Update Toll     */
+
+                if ($_POST['payant'] != 0) {
+                    echo "TESt";
+                    $data_2 = ([
+                        "code_troncon" => $tmp_troncon->code_troncon(),
+                        "id_societe" => $_POST['company']
+                        //"prix" => $_POST['price'],
+                    ]);
+                    $peage = new toll($data_2);
+                    $peage_m = new toll_manager();
+                    $peage_m->add($peage);
+                }
 
 
                 ?>

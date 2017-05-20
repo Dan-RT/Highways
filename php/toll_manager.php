@@ -63,6 +63,18 @@ class toll_manager {
         return (bool) $q->fetchColumn();
     }
 
+    public function exists_troncon($info) {
+
+        echo "exists_troncon 1";
+        if ($info) {
+            echo "exists_troncon 2";
+            $q = $this->_db->prepare('SELECT COUNT(*) FROM Peage WHERE code_troncon = :code_troncon');
+            $q->execute([':code_troncon' => $info]);
+        }
+
+        return (bool) $q->fetchColumn();
+    }
+
     //good
     public function get($code) {
 
@@ -71,6 +83,28 @@ class toll_manager {
             if ($this->exists($code)) {
 
                 $q = $this->_db->query('SELECT * FROM Peage WHERE id_peage = '.$code);
+                $data = $q->fetch(PDO::FETCH_ASSOC);
+
+                return new toll($data);
+
+            } else {
+                echo $code . " n'existe pas dans la table.";
+                return null;
+            }
+
+        } else {
+            echo "Wrong format, needs integer.";
+            return null;
+        }
+    }
+
+    public function get_by_troncon($code) {
+
+        if ($code) {
+
+            if ($this->exists_troncon($code)) {
+
+                $q = $this->_db->query('SELECT * FROM Peage WHERE code_troncon = '.$code);
                 $data = $q->fetch(PDO::FETCH_ASSOC);
 
                 return new toll($data);

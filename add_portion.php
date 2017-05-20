@@ -8,6 +8,13 @@
     $city_m = new highway_exit_manager();
     $cities = $city_m->getList();
 
+
+    require ('php/company.php');
+    require ('php/company_manager.php');
+
+    $company_m = new company_manager();
+    $companies = $company_m->getList();
+
     ?>
 
 
@@ -59,10 +66,31 @@
     </td>
 
     <td>
-        <label class="radio-inline"><input type="radio" name="optradio" value="1" checked>Ouvert</label>
-        <label class="radio-inline"><input type="radio" name="optradio" value="0">Fermé</label>
-
+        <label class="radio-inline"><input type="radio" name="ouvert" value="1" checked>Ouvert</label>
+        <label class="radio-inline"><input type="radio" name="ouvert" value="0">Fermé</label>
     </td>
+
+    <td>
+        <label class="radio-inline"><input type="radio" name="payant" value="1">Payant</label>
+        <label class="radio-inline"><input type="radio" name="payant" value="0"checked>Gratuit</label>
+    </td>
+
+    <td>
+        <select name="companies" id="companies">
+            <option value="0">Sélectionner une société</option>
+
+            <?php
+            foreach ($companies as $tmp_company) {
+                ?>
+                <option value="<?php echo $tmp_company->id_societe(); ?>"><?php echo $tmp_company->nom_societe(); ?></option>
+                <?php
+            }
+            ?>
+        </select>
+    </td>
+
+
+
     <td>
         <button name="submit_modif_portion" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-ok"></span></button>
     </td>

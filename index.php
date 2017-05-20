@@ -36,26 +36,29 @@
                     require ('php/register.php');
                     require ('php/register_manager.php');
 
-                    require ('php/company.php');
-                    require ('php/company_manager.php');
 
                     require ('php/toll.php');
                     require ('php/toll_manager.php');
 
+                    require ('php/company.php');
+                    require ('php/company_manager.php');
+
+
+
+                    echo "TEST";
+
 
                     $data = ([
-                        "code_troncon" => 0,
-                        "code_troncon_arrivee" => 2,
-                        "code_postal" => 67073,
-                        "nom_ville" => "Strasbourg",
-                        "id_autoroute" => 5
+                        "nom_societe" => "Sanef"
                     ]);
 
-                    $tmp = new highway_exit($data);
-                    $tmp_manager = new highway_exit_manager();
-                    print_r($tmp);
+                    $company = new company($data);
 
-                    $tmp_manager->add($tmp);
+                    print_r($company);
+
+                    $company_m = new company_manager();
+                    $company_m->add($company);
+
 
                     ?>
 

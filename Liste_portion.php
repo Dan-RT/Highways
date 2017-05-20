@@ -36,6 +36,8 @@
                     <th>Km initial</th>
                     <th>Km final</th>
                     <th>État</th>
+                    <th>Prix</th>
+                    <th>Société</th>
                     <th>
                         <button name="add_portion" class="btn btn-xs btn-default">
                             <span class="glyphicon glyphicon-plus"></span>
@@ -115,6 +117,20 @@
                                 }
                                 ?>
                             </td>
+                            <td>
+                                <?php
+                                if ($tmp_portion->payant()) {
+                                    echo "Payant";
+                                } else {
+                                    echo "Gratuit";
+                                }
+                                ?>
+                            </td>
+
+                            <td>
+
+                            </td>
+
                             <td>
                                 <input name="id_autoroute_hidden" class="hidden" value="<?php echo $id_hgw; ?>">
                                 <button name="modify_portion" value="<?php echo $tmp_portion->code_troncon(); ?>" class=" btn btn-xs btn-default"><span class="glyphicon glyphicon-pencil"></span></button>
