@@ -47,12 +47,19 @@
                 $cities = $city_m->getList();
 
                 foreach ($cities as $tmp) {
-                    echo "\ncode troncon : ".$tmp->code_troncon();
+                    //echo "\ncode troncon : ".$tmp->code_troncon();
                     $code_tmp = $tmp->code_troncon();
                     if ($code_tmp == $_POST['code_troncon']) {
-                        echo "\ndata";
                         $tmp->setCode_troncon(0);
-                        echo "test";
+                        $city_m->update($tmp);
+                    }
+                }
+
+                foreach ($cities as $tmp) {
+                    //echo "\ncode troncon arrivee : ".$tmp->code_troncon_arrivee();
+                    $code_tmp = $tmp->code_troncon_arrivee();
+                    if ($code_tmp == $_POST['code_troncon']) {
+                        $tmp->setCode_troncon_arrivee(0);
                         $city_m->update($tmp);
                     }
                 }
@@ -60,16 +67,12 @@
                 $tmp_city = $city_m->get($_POST['starting_city']);
                 $tmp_city->setCode_troncon($_POST['code_troncon']);
 
-                //echo "\n\nsortie : " . $tmp_city->numero_sortie();
-                //echo " troncon : " . $tmp_city->code_troncon();
 
                 $city_m->update($tmp_city);
 
                 $tmp_city = $city_m->get($_POST['arriving_city']);
                 $tmp_city->setCode_troncon_arrivee($_POST['code_troncon']);
 
-                //echo "\n\nsortie : " . $tmp_city->numero_sortie();
-                //echo " troncon : " . $tmp_city->code_troncon();
 
                 $city_m->update($tmp_city);
 
@@ -94,11 +97,56 @@
                 ]);
 
 
-
                 $tmp_troncon = new portion($data);
                 echo "Ouvert : " . $tmp_troncon->ouvert();
                 $tmp_troncon_m = new portion_manager();
                 $tmp_troncon_m->add($tmp_troncon);
+
+
+                $tmp_troncon = $tmp_troncon_m->getLast_added();
+                echo "Code nouveau tronçon : " . $tmp_troncon->code_troncon();
+
+                /*     Update villes     */
+
+                $city_m = new highway_exit_manager();
+                $cities = $city_m->getList();
+
+                foreach ($cities as $tmp) {
+                    echo "\ncode troncon : ".$tmp->code_troncon();
+                    $code_tmp = $tmp->code_troncon();
+                    if ($code_tmp == $_POST['code_troncon']) {
+                        $tmp->setCode_troncon(0);
+                        $city_m->update($tmp);
+                    }
+                }
+
+                foreach ($cities as $tmp) {
+                    echo "\ncode troncon arrivee : ".$tmp->code_troncon_arrivee();
+                    $code_tmp = $tmp->code_troncon_arrivee();
+                    if ($code_tmp == $_POST['code_troncon']) {
+                        $tmp->setCode_troncon_arrivee(0);
+                        $city_m->update($tmp);
+                    }
+                }
+
+
+
+                $tmp_city = $city_m->get($_POST['starting_city']);
+                $tmp_city->setCode_troncon($tmp_troncon->code_troncon());
+                echo " Ville : " . $tmp_city->nom_ville();
+                echo " code troncon (starting) : " . $tmp_city->code_troncon();
+
+                $city_m->update($tmp_city);
+
+                $tmp_city = $city_m->get($_POST['arriving_city']);
+                $tmp_city->setCode_troncon_arrivee($tmp_troncon->code_troncon());
+
+                echo " Ville : " . $tmp_city->nom_ville();
+                echo " code troncon (arriving) : " . $tmp_city->code_troncon_arrivee();
+
+                $city_m->update($tmp_city);
+
+
                 ?>
                 <script>
                     alert("Les données ont été mis à jour");

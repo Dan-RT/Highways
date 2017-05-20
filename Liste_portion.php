@@ -129,15 +129,14 @@
                         }
                             ?>
 
-                        <tr id="data_cities_<?php echo $tmp_portion->code_troncon(); ?>">
 
-                        </tr>
 
                         <?php
                     }
 
                     if ($cpt == 0) {
                         ?>
+
                         <tr>
                             <td>Aucune donnée à afficher</td>
                             <td></td>
@@ -157,6 +156,9 @@
                 </tbody>
             </table>
 
+
+            <input name="no_portion" class="hidden" value="<?php echo $cpt; ?>">
+            <input name="id_autoroute_hidden_3" class="hidden" value="<?php echo $id_element; ?>">
 
 
         </div>

@@ -20,10 +20,13 @@ $(function() {
             var arriving_city = $('select[name=arriving_city]').val();
 
 
-            //alert("Starting city : " + starting_city);
-            //alert("Arriving city : " + arriving_city);
 
             if ($('#code_troncon_hidden').val() == 'X') {
+
+                alert("adding portion");
+                alert("Starting city : " + starting_city);
+                alert("Arriving city : " + arriving_city);
+
                 //ajout d'un élément
                 $.post('send_data.php', {
                     type: 'portion',
@@ -31,7 +34,9 @@ $(function() {
                     id_autoroute: $('#id_autoroute_hidden_2').val(),
                     duKm: $('#modify_duKm').val(),
                     auKm: $('#modify_auKm').val(),
-                    ouvert: tmp_ouvert
+                    ouvert: tmp_ouvert,
+                    starting_city: starting_city,
+                    arriving_city: arriving_city
                 }, function(data) {
                     $('#data_portion_modify').html(data);
                 });

@@ -62,12 +62,17 @@ $(function() {
     $('button[name=add_portion]').click(function () {
         show_hide_portion++;
 
+        alert("add portion");
 
         if (show_hide_portion % 2 == 1) {
 
             //alert("teub");
-            var tmp = $('input[name=id_autoroute_hidden]').val();
-            //alert(tmp);
+            var tmp = 0;
+            if ($('input[name=no_portion]').val() == 0) {
+                tmp = $('input[name=id_autoroute_hidden_3]').val();
+            } else {
+                tmp = $('input[name=id_autoroute_hidden]').val();
+            }
 
             $.get('add_portion.php?id_autoroute='+tmp, function(data) {
                 $('#data_portion_modify').html(data);
