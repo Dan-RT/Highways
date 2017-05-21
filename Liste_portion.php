@@ -1,22 +1,25 @@
     <?php
 
+
     require ('php/portion.php');
     require ('php/portion_manager.php');
-
-    require ('php/highway_exit.php');
-    require ('php/highway_exit_manager.php');
 
     $portion_m = new portion_manager();
     $portions = $portion_m->getList();
 
 
-    $city_m = new highway_exit_manager();
-    $cities = $city_m->getList();
+    require ('php/highway_exit.php');
+    require ('php/highway_exit_manager.php');
+
+    $sortie_m = new highway_exit_manager();
+    $sorties = $sortie_m->getList();
 
     $id_element = $_GET['id_autoroute'];
 
     $cpt = 0;
     $id_hgw = 0;
+
+
     ?>
 
 <link href="CSS/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -37,7 +40,7 @@
                     <th>Km final</th>
                     <th>État</th>
                     <th>Prix</th>
-                    <th>Société</th>
+                    <th>Société </th>
                     <th>
                         <button name="add_portion" class="btn btn-xs btn-default">
                             <span class="glyphicon glyphicon-plus"></span>
@@ -70,15 +73,19 @@
 
                             <td>
                                 <?php
+
                                 $flag = 0;
                                 $cpt = 0;
 
-                                foreach ($cities as $tmp_city) {
-                                    if ($tmp_city->code_troncon() == $tmp_portion->code_troncon()) {
-                                        echo $tmp_city->nom_ville();
-                                        $flag = $cpt;
-                                        break;
+                                foreach ($sorties as $tmp_exit) {
+                                    if ($tmp_exit->code_troncon() != null) {
+                                        if ($tmp_exit->code_troncon() == $tmp_portion->code_troncon()) {
+                                            echo $sortie_m->get_nom_city($tmp_exit->id_city());
+                                            $flag = $cpt;
+                                            break;
+                                        }
                                     }
+
                                     $cpt++;
                                 }
                                 ?>
@@ -87,12 +94,15 @@
                                  <?php
 
                                  $cpt = 0;
-                                 foreach ($cities as $tmp_city) {
-                                     if ($tmp_city->code_troncon_arrivee() == $tmp_portion->code_troncon()) {
-                                         if ($cpt != $flag) {
-                                             echo $tmp_city->nom_ville();
+                                 foreach ($sorties as $tmp_exit) {
+                                     if ($tmp_exit->code_troncon_arrivee() != null) {
+
+                                         if ($tmp_exit->code_troncon_arrivee() == $tmp_portion->code_troncon()) {
+                                             echo $sortie_m->get_nom_city($tmp_exit->id_city());
+                                             break;
                                          }
                                      }
+
                                      $cpt++;
                                  }
 

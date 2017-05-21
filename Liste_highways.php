@@ -6,9 +6,9 @@
     require ('php/city.php');
     require ('php/city_manager.php');
 
+
     require ('php/highway_exit.php');
     require ('php/highway_exit_manager.php');
-
 
     require ('php/register.php');
     require ('php/register_manager.php');

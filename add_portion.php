@@ -15,6 +15,12 @@
     $company_m = new company_manager();
     $companies = $company_m->getList();
 
+    require ('php/city.php');
+    require ('php/city_manager.php');
+
+    $city_m = new city_manager();
+    $cities = $city_m->getList();
+
     ?>
 
 
@@ -27,32 +33,26 @@
     <td>
         <select name="starting_city" id="starting_city">
             <option value="0">Sélectionner une ville</option>
+
             <?php
             foreach ($cities as $tmp_city) {
-                $tmp = $tmp_city->id_autoroute();
-                if ($tmp == $id_autoroute) {
-                    ?>
-                    <option
-                        value="<?php echo $tmp_city->numero_sortie(); ?>"><?php echo $tmp_city->nom_ville(); ?></option>
-                    <?php
-                }
+                ?>
+                <option value="<?php echo $tmp_city->id_city(); ?>"><?php echo $tmp_city->nom_ville(); ?></option>
+                <?php
             }
             ?>
+
         </select>
     </td>
 
     <td>
         <select name="arriving_city" id="arriving_city">
             <option value="0">Sélectionner une ville</option>
-
             <?php
             foreach ($cities as $tmp_city) {
-                $tmp = $tmp_city->id_autoroute();
-                if ($tmp == $id_autoroute) {
-                    ?>
-                    <option value="<?php echo $tmp_city->numero_sortie(); ?>"><?php echo $tmp_city->nom_ville(); ?></option>
-                    <?php
-                }
+                ?>
+                <option value="<?php echo $tmp_city->id_city(); ?>"><?php echo $tmp_city->nom_ville(); ?></option>
+                <?php
             }
             ?>
         </select>

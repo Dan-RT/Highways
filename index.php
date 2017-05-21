@@ -48,16 +48,8 @@
                     echo "TEST";
 
 
-                    $data = ([
-                        "nom_societe" => "Sanef"
-                    ]);
-
-                    $company = new company($data);
-
-                    print_r($company);
-
-                    $company_m = new company_manager();
-                    $company_m->add($company);
+                    $exit_m = new highway_exit_manager();
+                    $exit_m->get_nom_city(1);
 
 
                     ?>

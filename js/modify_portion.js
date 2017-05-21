@@ -16,7 +16,7 @@ $(function() {
 
     $('button[name=submit_modif_portion]').click(function () {
 
-        alert("submit");
+        //alert("submit");
 
         //alert($('#id_autoroute_hidden_2').val());
         if ($('#modify_duKm').val() == "" || $('#modify_auKm').val() == "" || $('select[name=starting_city]').val() == 0 || $('select[name=arriving_city]').val() == 0) {
@@ -28,7 +28,7 @@ $(function() {
             var tmp_ouvert = $('input[name=ouvert]:checked').val();
             var tmp_payant = $('input[name=payant]:checked').val();
             var company = $('#companies').val();
-            alert("Payant : " + tmp_payant);
+            //alert("Payant : " + tmp_payant);
             var starting_city = $('select[name=starting_city]').val();
             var arriving_city = $('select[name=arriving_city]').val();
 
@@ -60,6 +60,7 @@ $(function() {
                     action: 'modify',
                     duKm: $('#modify_duKm').val(),
                     auKm: $('#modify_auKm').val(),
+                    id_autoroute: $('#id_autoroute_hidden_2').val(),
                     ouvert: tmp_ouvert,
                     payant: tmp_payant,
                     company: company,

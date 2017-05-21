@@ -12,10 +12,15 @@ class highway_exit {
     private $_libelle_sortie;
     private $_numero_sortie;
     private $_code_troncon;
+    private $_id_city;
+    private $_id_autoroute;
+
+    private $_nom_ville;
+
+
     private $_code_troncon_arrivee;
     private $_code_postal;
-    private $_nom_ville;
-    private $_id_autoroute;
+
 
     public function __construct(array $data = null) {
 
@@ -41,11 +46,17 @@ class highway_exit {
         }
     }
 
+
     public function setLibelle_sortie($nom) {
         if (is_string($nom) && strlen($nom) <= 30) {
             $this->_libelle_sortie = $nom;
         }
     }
+
+    public function libelle_sortie() {
+        return $this->_libelle_sortie;
+    }
+
 
     public function setNumero_sortie($nb) {
 
@@ -56,6 +67,11 @@ class highway_exit {
         }
     }
 
+    public function numero_sortie() {
+        return $this->_numero_sortie;
+    }
+
+
     public function setCode_troncon($code) {
 
         $code = (int) $code;
@@ -65,14 +81,10 @@ class highway_exit {
         }
     }
 
-    public function setCode_troncon_arrivee($code) {
-
-        $code = (int) $code;
-
-        if ($code >= 0 && $code <= 10000) {
-            $this->_code_troncon_arrivee = $code;
-        }
+    public function code_troncon() {
+        return $this->_code_troncon;
     }
+
 
 
     public function setId_autoroute($code) {
@@ -84,25 +96,37 @@ class highway_exit {
         }
     }
 
-    public function libelle_sortie() {
-        return $this->_libelle_sortie;
+    public function id_autoroute() {
+        return $this->_id_autoroute;
     }
 
-    public function numero_sortie() {
-        return $this->_numero_sortie;
+
+    public function setId_city($code) {
+        $code = (int) $code;
+        if ($code >= 1 && $code <= 100000) {
+            $this->_id_city = $code;
+        }
     }
 
-    public function code_troncon() {
-        return $this->_code_troncon;
+    public function id_city() {
+        return $this->_id_city;
+    }
+
+
+
+    public function setCode_troncon_arrivee($code) {
+
+        $code = (int) $code;
+
+        if ($code >= 0 && $code <= 10000) {
+            $this->_code_troncon_arrivee = $code;
+        }
     }
 
     public function code_troncon_arrivee() {
         return $this->_code_troncon_arrivee;
     }
 
-    public function id_autoroute() {
-        return $this->_id_autoroute;
-    }
 
     public function setNom_ville($nom) {
 
