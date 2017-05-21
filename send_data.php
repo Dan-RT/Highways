@@ -19,12 +19,12 @@
 
 
 
-    /*echo " name_autoroute : " . $_POST['name_autoroute'];
+    echo " name_autoroute : " . $_POST['name_autoroute'];
     echo " Type : " . $_POST['type'];
     echo " Action : " . $_POST['action'];
-    echo " id_autoroute : " . $_POST['id_autoroute'];*/
+    echo " id_autoroute : " . $_POST['id_autoroute'];
 
-
+/*
 
     echo " Code tronçon : " . $_POST['code_troncon'];
     echo " Type : " . $_POST['type'];
@@ -36,7 +36,7 @@
     echo " prix : " . $_POST['price'];
     echo " company : " . $_POST['company'];
     echo " starting_city : " . $_POST['starting_city'];
-    echo " arriving_city : " . $_POST['arriving_city'];
+    echo " arriving_city : " . $_POST['arriving_city'];*/
 
 
     switch ($_POST['type']) {
@@ -73,9 +73,8 @@
                     echo " id_city : " . $tmp->id_city() . " : " . $_POST['starting_city'];
                     echo " id_autoroute : " . $tmp->id_autoroute() . " : " . $_POST['id_autoroute'];*/
                     //echo " numero_sortie : " . $tmp->numero_sortie();
-                    //if (($id_tmp == $_POST['starting_city'] && $code_tmp != null) && $id_autoroute_tmp == $_POST['id_autoroute']) {
-                    if ($id_tmp == $_POST['starting_city'] && $code_tmp != null) {
-                        $city_m->delete($tmp);
+                    if ($id_tmp == $_POST['starting_city'] && $code_tmp != null && $id_autoroute_tmp == $_POST['id_autoroute']) {
+                         $city_m->delete($tmp);
                     }
                 }
 
@@ -84,8 +83,7 @@
                     $code_tmp = $tmp->code_troncon_arrivee();
                     $id_tmp = $tmp->id_city();
                     $id_autoroute_tmp = $tmp->id_autoroute();
-                    //if (($id_tmp == $_POST['arriving_city'] && $code_tmp != null) && $id_autoroute_tmp == $_POST['id_autoroute']) {
-                    if ($id_tmp == $_POST['arriving_city'] && $code_tmp != null) {
+                    if ($id_tmp == $_POST['arriving_city'] && $code_tmp != null && $id_autoroute_tmp == $_POST['id_autoroute']) {
                         $city_m->delete($tmp);
                     }
                 }
@@ -179,8 +177,7 @@
                     $code_tmp = $tmp->code_troncon();
                     $id_tmp = $tmp->id_city();
                     $id_autoroute_tmp = $tmp->id_autoroute();
-                    //if (($id_tmp == $_POST['starting_city'] && $code_tmp != null) && $id_autoroute_tmp == $_POST['id_autoroute']) {
-                    if ($id_tmp == $_POST['starting_city'] && $code_tmp != null) {
+                    if (($id_tmp == $_POST['starting_city'] && $code_tmp != null) && $id_autoroute_tmp == $_POST['id_autoroute']) {
                         $city_m->delete($tmp);
                     }
                 }
@@ -190,8 +187,7 @@
                     $code_tmp = $tmp->code_troncon_arrivee();
                     $id_tmp = $tmp->id_city();
                     $id_autoroute_tmp = $tmp->id_autoroute();
-                    //if (($id_tmp == $_POST['arriving_city'] && $code_tmp != null) && $id_autoroute_tmp == $_POST['id_autoroute']) {
-                    if ($id_tmp == $_POST['arriving_city'] && $code_tmp != null) {
+                    if (($id_tmp == $_POST['arriving_city'] && $code_tmp != null) && $id_autoroute_tmp == $_POST['id_autoroute']) {
                         $city_m->delete($tmp);
                     }
                 }
@@ -329,6 +325,34 @@
                 <?php
 
             } else if ($_POST['action'] == "remove") {
+
+                $sortie_m = new highway_exit_manager();
+                $sorties = $sortie_m->getList();
+
+                $troncon_m = new portion_manager();
+                $portions = $troncon_m->getList();
+
+                $toll_m = new toll_manager();
+                $peages = $toll_m->getList();
+
+                foreach ($sorties as $tmp_exit) {
+                    if ($tmp_city->id_autoroute() == $_POST['id_autoroute']) {
+                        $sortie_m->delete($tmp_exit);
+                    }
+                }
+
+                foreach ($portions as $tmp_portion) {
+                    if ($tmp_portion->id_autoroute() == $_POST['id_autoroute']) {
+                        foreach ($peages as $tmp_toll) {
+                            if ($tmp_portion->code_troncon() == $tmp_toll->code_troncon()) {
+                                $toll_m->delete($tmp_toll);
+                            }
+                        }
+                        $troncon_m->delete($tmp_portion);
+                    }
+                }
+
+
 
                 $data = ([
                     "id_autoroute" => $_POST['id_autoroute']

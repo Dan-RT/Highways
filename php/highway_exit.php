@@ -62,7 +62,7 @@ class highway_exit {
 
         $nb = (int) $nb;
 
-        if ($nb >= 1 && $nb <= 100) {
+        if ($nb >= 1 && $nb <= 10000) {
             $this->_numero_sortie = $nb;
         }
     }

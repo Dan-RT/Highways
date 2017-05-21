@@ -85,10 +85,6 @@ $(function() {
             modulo++;
         }
 
-
-
-
-
     });
 
 
