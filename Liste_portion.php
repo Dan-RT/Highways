@@ -138,7 +138,13 @@
                             </td>
 
                             <td>
-
+                                <?php
+                                    if ($tmp_portion->payant()) {
+                                        $portion_m->get_societe($tmp_portion);
+                                    } else {
+                                        echo "None";
+                                    }
+                                ?>
                             </td>
 
                             <td>

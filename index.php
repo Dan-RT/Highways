@@ -1,26 +1,21 @@
     <?php
 
 
-    require ('php/trip.php');
-    require ('php/trip_manager.php');
+    require ('php/portion.php');
+    require ('php/portion_manager.php');
 
 
-    $trip_m = new trip_manager();
 
     $data = ([
-        "id_autoroute" => 1,
-        "id_city" => 1,
-        "id_city_2" => 6,
-        "id_voiture" => 1
+        "code_troncon" => 81
     ]);
 
-    //$trip_tmp = new trip($data);
+    $tmp = new portion($data);
+    $portion_m = new portion_manager();
+
+    //$portion_m->get_societe($tmp);
 
 
-
-    //print_r($trip_m->getList());
-
-    //$trip_m->add($trip_tmp);
 
     ?>
 

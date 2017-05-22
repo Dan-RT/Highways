@@ -55,14 +55,17 @@ $trips = $trip_m->getList();
             ?>
 
             <tr>
-                <td><?php echo $tmp_trip->id_deplacement(); ?></td>
+                <td><?php $trip_m->get_name_city($tmp_trip); ?></td>
                 <td>
                     <input id="modify_name_highway_<?php echo $tmp_trip->id_deplacement(); ?>" value="<?php echo $tmp_trip->id_deplacement(); ?>">
                 </td>
-                <td><?php echo $tmp_trip->id_deplacement(); ?></td>
+                <td>
+                    <?php $trip_m->get_name_city_Ville($tmp_trip);?>
+                    <input id="modify_code_highway_<?php echo $tmp_trip->id_deplacement(); ?>" value="<?php echo $tmp_trip->id_deplacement(); ?>">
+                </td>
 
                 <td>
-                    <input id="modify_code_highway_<?php echo $tmp_trip->id_deplacement(); ?>" value="<?php echo $tmp_trip->id_deplacement(); ?>">
+                    <?php $trip_m->get_autoroute_name($tmp_trip);?>
                 </td>
 
                 <td>

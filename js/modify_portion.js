@@ -6,6 +6,12 @@ $(function() {
     $('#code_troncon_hidden').hide();
     $('#companies').hide();
 
+    if ($('input[name=payant]:checked').val() == 1) {
+        $('#companies').show();
+    } else {
+        $('#companies').hide();
+    }
+
     $('input[name=payant]').change(function () {
         if ($('input[name=payant]:checked').val() == 1) {
             $('#companies').show();

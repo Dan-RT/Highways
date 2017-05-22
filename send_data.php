@@ -65,9 +65,10 @@
                 /*     Update villes     */
 
                 $city_m = new highway_exit_manager();
-                $cities = $city_m->getList();
+                $exits = $city_m->getList();
 
-                foreach ($cities as $tmp) {
+                foreach ($exits as $tmp) {
+
                     $code_tmp = $tmp->code_troncon();
                     $id_tmp = $tmp->id_city();
                     $id_autoroute_tmp = $tmp->id_autoroute();
@@ -76,13 +77,14 @@
                     echo " id_city : " . $tmp->id_city() . " : " . $_POST['starting_city'];
                     echo " id_autoroute : " . $tmp->id_autoroute() . " : " . $_POST['id_autoroute'];*/
                     //echo " numero_sortie : " . $tmp->numero_sortie();
+
                     if ($id_tmp == $_POST['starting_city'] && $code_tmp != null && $id_autoroute_tmp == $_POST['id_autoroute']) {
                          $city_m->delete($tmp);
                     }
                 }
 
 
-                foreach ($cities as $tmp) {
+                foreach ($exits as $tmp) {
                     $code_tmp = $tmp->code_troncon_arrivee();
                     $id_tmp = $tmp->id_city();
                     $id_autoroute_tmp = $tmp->id_autoroute();
@@ -91,6 +93,15 @@
                     }
                 }
 
+
+
+                echo "---------";
+
+
+
+
+
+
                 $data_3 = ([
                     "id_city" => $_POST['starting_city'],
                     "code_troncon" => $tmp_troncon->code_troncon(),
@@ -98,8 +109,6 @@
                 ]);
 
                 $tmp_city = new highway_exit($data_3);
-
-
 
                 $city_m->add($tmp_city);
 
@@ -119,23 +128,21 @@
 
 
 
-
-
                 /*     Update Toll     */
 
                 if ($_POST['payant'] != 0) {
-                    $data_2 = ([
-                        "code_troncon" => $_POST['code_troncon'],
-                        "id_societe" => $_POST['company']
-                        //"prix" => $_POST['price'],
-                    ]);
-                    $peage = new toll($data_2);
+
                     $peage_m = new toll_manager();
-                    $peage_m->add($peage);
+                    $peage = $peage_m->get_by_troncon($_POST['code_troncon']);
+
+                    $peage->setId_societe($_POST['company']);
+
+
+                    $peage_m->update($peage);
                 } else {
                     $peage_m = new toll_manager();
                     $peage = $peage_m->get_by_troncon($_POST['code_troncon']);
-                    //print_r($peage);
+
                     $peage_m->delete($peage);
                 }
 
@@ -148,7 +155,8 @@
                 <?php
 
 
-            } else if ($_POST['action'] == "add") {
+            }
+            else if ($_POST['action'] == "add") {
 
                 echo $_POST['action'];
                 $data = ([
@@ -284,6 +292,7 @@
 
 
             break;
+
         case "highway":
 
             if ($_POST['action'] == "modify") {
@@ -329,6 +338,8 @@
 
             } else if ($_POST['action'] == "remove") {
 
+                echo "Id autoroute : " . $_POST['id_autoroute'];
+
                 $sortie_m = new highway_exit_manager();
                 $sorties = $sortie_m->getList();
 
@@ -338,19 +349,37 @@
                 $toll_m = new toll_manager();
                 $peages = $toll_m->getList();
 
-                foreach ($sorties as $tmp_exit) {
-                    if ($tmp_city->id_autoroute() == $_POST['id_autoroute']) {
-                        $sortie_m->delete($tmp_exit);
+                print_r($peages);
+
+/*
+                $troncon_m = new portion_manager();
+                $portions = $troncon_m->getList();
+
+                $toll_m = new toll_manager();
+                $peages = $toll_m->getList();
+
+*/
+
+                foreach ($sorties as $temp_exit) {
+
+                    if ($temp_exit->id_autoroute() == $_POST['id_autoroute']) {
+                        echo "delete exit " . $temp_exit->numero_sortie();
+                        $sortie_m->delete($temp_exit);
                     }
                 }
 
+
+
                 foreach ($portions as $tmp_portion) {
+
                     if ($tmp_portion->id_autoroute() == $_POST['id_autoroute']) {
                         foreach ($peages as $tmp_toll) {
                             if ($tmp_portion->code_troncon() == $tmp_toll->code_troncon()) {
+                                echo "delete toll " . $tmp_toll->id_peage();
                                 $toll_m->delete($tmp_toll);
                             }
                         }
+                        echo "delete portion " . $tmp_portion->code_troncon();
                         $troncon_m->delete($tmp_portion);
                     }
                 }
@@ -374,6 +403,7 @@
             }
 
             break;
+
         case "city":
 
             $ville_m = new city_manager();
@@ -422,7 +452,6 @@
                 <?php
 
             } else if ($_POST['action'] == "remove") {
-
 
                 echo "Removing city";
                 $data = ([
