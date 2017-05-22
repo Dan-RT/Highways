@@ -66,7 +66,6 @@ class highway_manager {
         } else {
             return null;
         }
-
     }
 
     public function getList() {

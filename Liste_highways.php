@@ -45,6 +45,7 @@
 
     <div class="container">
         <h2>Higways</h2>
+        <a href="index.php" class="btn btn-sm btn-default">Home</a>
         <table class="table table-condensed">
             <thead>
                 <tr>

@@ -17,26 +17,29 @@
     require ('php/toll.php');
     require ('php/toll_manager.php');
 
+    require ('php/city.php');
+    require ('php/city_manager.php');
 
 
-    echo " name_autoroute : " . $_POST['name_autoroute'];
-    echo " Type : " . $_POST['type'];
-    echo " Action : " . $_POST['action'];
-    echo " id_autoroute : " . $_POST['id_autoroute'];
+    /*
+        echo " name_autoroute : " . $_POST['name_autoroute'];
+        echo " Type : " . $_POST['type'];
+        echo " Action : " . $_POST['action'];
+        echo " id_autoroute : " . $_POST['id_autoroute'];
 
-/*
 
-    echo " Code tronçon : " . $_POST['code_troncon'];
-    echo " Type : " . $_POST['type'];
-    echo " Action : " . $_POST['action'];
-    echo " duKm : " . $_POST['duKm'];
-    echo " auKm : " . $_POST['auKm'];
-    echo " ouvert : " . $_POST['ouvert'];
-    echo " payant : " . $_POST['payant'];
-    echo " prix : " . $_POST['price'];
-    echo " company : " . $_POST['company'];
-    echo " starting_city : " . $_POST['starting_city'];
-    echo " arriving_city : " . $_POST['arriving_city'];*/
+
+        echo " Code tronçon : " . $_POST['code_troncon'];
+        echo " Type : " . $_POST['type'];
+        echo " Action : " . $_POST['action'];
+        echo " duKm : " . $_POST['duKm'];
+        echo " auKm : " . $_POST['auKm'];
+        echo " ouvert : " . $_POST['ouvert'];
+        echo " payant : " . $_POST['payant'];
+        echo " prix : " . $_POST['price'];
+        echo " company : " . $_POST['company'];
+        echo " starting_city : " . $_POST['starting_city'];
+        echo " arriving_city : " . $_POST['arriving_city'];*/
 
 
     switch ($_POST['type']) {
@@ -371,8 +374,74 @@
             }
 
             break;
-        case 2:
-            echo "i égal 2";
+        case "city":
+
+            $ville_m = new city_manager();
+
+            if ($_POST['action'] == "modify") {
+
+                echo " Nom Ville : " . $_POST['nom_ville'];
+                echo " Type : " . $_POST['type'];
+                echo " Action : " . $_POST['action'];
+                echo " Id city : " . $_POST['id_city'];
+
+
+                $data = ([
+                    "nom_ville" => $_POST['nom_ville'],
+                    "id_city" => $_POST['id_city'],
+                    "code_postal" => $_POST['code_postal']
+                ]);
+
+                $tmp_city = new city($data);
+                $ville_m->update($tmp_city);
+
+                ?>
+                <script>
+                    alert("Les données ont été mis à jour");
+                    window.location.replace("Liste_villes.php");
+                </script>
+                <?php
+
+
+            } else if ($_POST['action'] == "add") {
+
+                $data = ([
+                    "nom_ville" => $_POST['nom_ville'],
+                    "code_postal" => $_POST['code_postal']
+                ]);
+
+
+                $tmp_city = new city($data);
+                $ville_m->add($tmp_city);
+
+                ?>
+                <script>
+                    alert("Les données ont été mis à jour");
+                    window.location.replace("Liste_villes.php");
+                </script>
+                <?php
+
+            } else if ($_POST['action'] == "remove") {
+
+
+                echo "Removing city";
+                $data = ([
+                    "id_city" => $_POST['id_city']
+                ]);
+
+
+                $tmp_city = new city($data);
+                $ville_m->delete($tmp_city);
+
+                ?>
+                <script>
+                    alert("Les données ont été mis à jour");
+                    window.location.replace("Liste_villes.php");
+                </script>
+                <?php
+
+
+            }
             break;
     }
 
