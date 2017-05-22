@@ -65,9 +65,7 @@ class toll_manager {
 
     public function exists_troncon($info) {
 
-        echo "exists_troncon 1";
         if ($info) {
-            echo "exists_troncon 2";
             $q = $this->_db->prepare('SELECT COUNT(*) FROM Peage WHERE code_troncon = :code_troncon');
             $q->execute([':code_troncon' => $info]);
         }

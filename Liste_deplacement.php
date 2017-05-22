@@ -27,7 +27,7 @@ $trips = $trip_m->getList();
 
 
 <div class="container">
-    <h2>Cities</h2>
+    <h2>Déplacements</h2>
     <a href="index.php" class="btn btn-sm btn-default">Home</a>
     <table class="table table-condensed">
         <thead>
@@ -105,7 +105,7 @@ $trips = $trip_m->getList();
 
 
 <script src="js/lib/jquery.min.js"></script>
-<script src="js/Liste_villes.js"></script>
+<!--<script src="js/Liste_villes.js"></script>-->
 
 </body>
 </html>

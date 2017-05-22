@@ -95,13 +95,6 @@
 
 
 
-                echo "---------";
-
-
-
-
-
-
                 $data_3 = ([
                     "id_city" => $_POST['starting_city'],
                     "code_troncon" => $tmp_troncon->code_troncon(),
@@ -123,7 +116,6 @@
 
                 $tmp_city_2 = new highway_exit($data_4);
 
-
                 $city_m->add($tmp_city_2);
 
 
@@ -132,25 +124,34 @@
 
                 if ($_POST['payant'] != 0) {
 
+                    $data_5 = ([
+                        "code_troncon" => $_POST['code_troncon'],
+                        "id_societe" => $_POST['company']
+                    ]);
+
                     $peage_m = new toll_manager();
-                    $peage = $peage_m->get_by_troncon($_POST['code_troncon']);
+                    //$peage = $peage_m->get_by_troncon($_POST['code_troncon']);
 
-                    $peage->setId_societe($_POST['company']);
+                    $peage = new toll($data_5);
 
+                    //$peage->setId_societe($_POST['company']);
 
-                    $peage_m->update($peage);
+                    $peage_m->add($peage);
                 } else {
                     $peage_m = new toll_manager();
                     $peage = $peage_m->get_by_troncon($_POST['code_troncon']);
+                    if ($peage != null) {
+                        $peage_m->delete($peage);
+                    }
 
-                    $peage_m->delete($peage);
+
                 }
 
 
             ?>
                 <script>
-                    //alert("Les données ont été mis à jour");
-                    //window.location.replace("Liste_highways.php");
+                    alert("Les données ont été mis à jour");
+                    window.location.replace("Liste_highways.php");
                 </script>
                 <?php
 

@@ -41,7 +41,8 @@
 
             <a href="Liste_highways.php" class="btn btn-block btn-lg btn-primary"><span class="glyphicon glyphicon-align-left"></span> Liste Autoroutes</a>
             <a href="Liste_villes.php" class="btn btn-block btn-lg btn-primary"><span class="glyphicon glyphicon-align-left"></span> Liste Villes</a>
-            <a href="Liste_deplacement.php" class="btn btn-block btn-lg btn-primary"><span class="glyphicon glyphicon-align-left"></span> Déplacements</a>
+            <!--<a href="Liste_deplacement.php" class="btn btn-block btn-lg btn-primary"><span class="glyphicon glyphicon-align-left"></span> Déplacements</a>-->
+            <a href="choix_itinéraire.php" class="btn btn-block btn-lg btn-primary"><span class="glyphicon glyphicon-align-left"></span> Itinéraire</a>
 
 
         </div>

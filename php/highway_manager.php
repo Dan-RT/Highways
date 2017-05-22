@@ -91,6 +91,28 @@ class highway_manager {
     }
 
 
+
+
+    public function get_troncons(highway $autoroute) {
+
+        $troncons = [];
+
+        $q = $this->_db->query('SELECT *
+                                    FROM Troncon
+                                    INNER JOIN Autoroute
+                                        ON Troncon.id_autoroute = Autoroute.id_autoroute
+                                    WHERE Autoroute.id_autoroute = ' . $autoroute->id_autoroute());
+
+        while ($data = $q->fetch(PDO::FETCH_ASSOC)) {
+            $troncons[] = new portion($data);
+        }
+
+        return $troncons;
+    }
+
+
+
+
 }
 
 
