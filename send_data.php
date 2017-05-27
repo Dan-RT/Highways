@@ -95,6 +95,8 @@
 
 
 
+
+
                 $data_3 = ([
                     "id_city" => $_POST['starting_city'],
                     "code_troncon" => $tmp_troncon->code_troncon(),
@@ -104,7 +106,6 @@
                 $tmp_city = new highway_exit($data_3);
 
                 $city_m->add($tmp_city);
-
 
 
 
@@ -118,6 +119,7 @@
 
                 $city_m->add($tmp_city_2);
 
+                echo "TEST";
 
 
                 /*     Update Toll     */
@@ -133,7 +135,7 @@
                     //$peage = $peage_m->get_by_troncon($_POST['code_troncon']);
 
                     $peage = new toll($data_5);
-
+                    echo "TEST";
                     //$peage->setId_societe($_POST['company']);
 
                     $peage_m->add($peage);
@@ -150,8 +152,8 @@
 
             ?>
                 <script>
-                    alert("Les données ont été mis à jour");
-                    window.location.replace("Liste_highways.php");
+                    //alert("Les données ont été mis à jour");
+                    //window.location.replace("Liste_highways.php");
                 </script>
                 <?php
 

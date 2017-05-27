@@ -25,6 +25,7 @@ $trips = $trip_m->getList();
 <body>
 
 
+<?php include ("navbar.php"); ?>
 
 <div class="container">
     <h2>Déplacements</h2>

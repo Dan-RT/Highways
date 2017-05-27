@@ -42,10 +42,19 @@
     <body>
 
 
+    <?php include ("navbar.php"); ?>
 
     <div class="container">
-        <h2>Higways</h2>
-        <a href="index.php" class="btn btn-sm btn-default">Home</a>
+
+
+        <div class="row">
+            <div class="col-lg-offset-3 col-sm-8">
+                <h1>Listes des différentes Autoroutes :</h1>
+            </div>
+        </div>
+
+        <!--<h2>Higways</h2>-->
+        <!--<a href="index.php" class="btn btn-sm btn-default">Home</a>-->
         <table class="table table-condensed">
             <thead>
                 <tr>
@@ -70,6 +79,7 @@
             foreach ($autoroutes as $tmp_highway) {
 
                     ?>
+
 
                     <tr>
                         <td><?php echo $tmp_highway->code_autoroute(); ?></td>

@@ -63,96 +63,97 @@
                             $cpt++;
 
                             ?>
-                    <tr>
+                        <tr name="tr_<?php //echo $tmp_portion->id_autoroute() ?>">
+                                <td>
+                                    <?php
+                                    echo $tmp_portion->code_troncon();
+                                    ?>
+                                </td>
 
-                            <td>
-                                <?php
-                                echo $tmp_portion->code_troncon();
-                                ?>
-                            </td>
+                                <td>
+                                    <?php
 
-                            <td>
-                                <?php
+                                    $flag = 0;
+                                    $cpt = 0;
 
-                                $flag = 0;
-                                $cpt = 0;
-
-                                foreach ($sorties as $tmp_exit) {
-                                    if ($tmp_exit->code_troncon() != null) {
-                                        if ($tmp_exit->code_troncon() == $tmp_portion->code_troncon()) {
-                                            echo $sortie_m->get_nom_city($tmp_exit->id_city());
-                                            $flag = $cpt;
-                                            break;
+                                    foreach ($sorties as $tmp_exit) {
+                                        if ($tmp_exit->code_troncon() != null) {
+                                            if ($tmp_exit->code_troncon() == $tmp_portion->code_troncon()) {
+                                                echo $sortie_m->get_nom_city($tmp_exit->id_city());
+                                                $flag = $cpt;
+                                                break;
+                                            }
                                         }
+
+                                        $cpt++;
                                     }
+                                    ?>
+                                </td>
+                                <td>
+                                     <?php
 
-                                    $cpt++;
-                                }
-                                ?>
-                            </td>
-                            <td>
-                                 <?php
+                                     $cpt = 0;
+                                     foreach ($sorties as $tmp_exit) {
+                                         if ($tmp_exit->code_troncon_arrivee() != null) {
 
-                                 $cpt = 0;
-                                 foreach ($sorties as $tmp_exit) {
-                                     if ($tmp_exit->code_troncon_arrivee() != null) {
-
-                                         if ($tmp_exit->code_troncon_arrivee() == $tmp_portion->code_troncon()) {
-                                             echo $sortie_m->get_nom_city($tmp_exit->id_city());
-                                             break;
+                                             if ($tmp_exit->code_troncon_arrivee() == $tmp_portion->code_troncon()) {
+                                                 echo $sortie_m->get_nom_city($tmp_exit->id_city());
+                                                 break;
+                                             }
                                          }
+
+                                         $cpt++;
                                      }
 
-                                     $cpt++;
-                                 }
-
-                                ?>
-                            </td>
-                            <td>
-                                <?php
-                                echo $tmp_portion->duKm();
-                                ?>
-                            </td>
-                            <td>
-                                <?php
-                                echo $tmp_portion->auKm();
-                                ?>
-                            </td>
-                            <td>
-                                <?php
-                                if ($tmp_portion->ouvert()) {
-                                    echo "Ouvert";
-                                } else {
-                                    echo "Fermé";
-                                }
-                                ?>
-                            </td>
-                            <td>
-                                <?php
-                                if ($tmp_portion->payant()) {
-                                    echo "Payant";
-                                } else {
-                                    echo "Gratuit";
-                                }
-                                ?>
-                            </td>
-
-                            <td>
-                                <?php
-                                    if ($tmp_portion->payant()) {
-                                        $portion_m->get_societe($tmp_portion);
+                                    ?>
+                                </td>
+                                <td>
+                                    <?php
+                                    echo $tmp_portion->duKm();
+                                    ?>
+                                </td>
+                                <td>
+                                    <?php
+                                    echo $tmp_portion->auKm();
+                                    ?>
+                                </td>
+                                <td>
+                                    <?php
+                                    if ($tmp_portion->ouvert()) {
+                                        echo "Ouvert";
                                     } else {
-                                        echo "None";
+                                        echo "Fermé";
                                     }
-                                ?>
-                            </td>
+                                    ?>
+                                </td>
+                                <td>
+                                    <?php
+                                    if ($tmp_portion->payant()) {
+                                        echo "Payant";
+                                    } else {
+                                        echo "Gratuit";
+                                    }
+                                    ?>
+                                </td>
 
-                            <td>
-                                <input name="id_autoroute_hidden" class="hidden" value="<?php echo $id_hgw; ?>">
-                                <button name="modify_portion" value="<?php echo $tmp_portion->code_troncon(); ?>" class=" btn btn-xs btn-default"><span class="glyphicon glyphicon-pencil"></span></button>
-                                <button name="remove_portion" value="<?php echo $tmp_portion->code_troncon(); ?>" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-remove"></span></button>
-                            </td>
-                    </tr>
+                                <td>
+                                    <?php
+                                        if ($tmp_portion->payant()) {
+                                            $portion_m->get_societe($tmp_portion);
+                                        } else {
+                                            echo "None";
+                                        }
+                                    ?>
+                                </td>
+
+                                <td>
+                                    <input name="id_autoroute_hidden" class="hidden" value="<?php echo $id_hgw; ?>">
+                                    <button name="modify_portion" value="<?php echo $tmp_portion->code_troncon(); ?>" class=" btn btn-xs btn-default"><span class="glyphicon glyphicon-pencil"></span></button>
+                                    <button name="remove_portion" value="<?php echo $tmp_portion->code_troncon(); ?>" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-remove"></span></button>
+                                </td>
+                        </tr>
+
+
 
                             <?php
 

@@ -2,6 +2,11 @@ $(function() {
 
     var show_hide = 0;
 
+    alert("TEST1");
+    $('tr[name=tr_]').click(function () {
+        alert("CLick");
+    });
+
     $('input').hide();
     $('.button_submit').hide();
 

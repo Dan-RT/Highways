@@ -1,13 +1,16 @@
 
 
+h1 {
+    text-align: center;
+    font-size: 7vh;
+    margin-top: 5vh;
+    margin-bottom: 16vh;
+}
+
 
 #workplace {
     padding-top: 2vh;
     padding-bottom: 2vh;
-    /*background-color: lightskyblue;
-    border: 2px solid black;
-    border-radius: 6px;*/
-    line-height: 40px;
     text-align: center;
 }
 
@@ -23,14 +26,6 @@
 
 
 #style_container {
-    margin-top: 30vh;
+    //margin-top: 30vh;
 }
 
-
-.itineraire {
-
-    background-color: rgb(43, 97, 142);
-    text-align: center;
-    border-radius: 6px;
-
-}

@@ -1,0 +1,30 @@
+
+/*[class*="col-"] {
+
+    background-color: rgb(59, 120, 181);
+    border: 2px solid black;
+    border-radius: 6px;
+    line-height: 40px;
+    text-align: center;
+}*/
+
+h1 {
+    margin-bottom: 5vh;
+}
+
+#workplace {
+    padding: 3vh;
+    background-color: rgb(59, 120, 181);
+    //border: 2px solid black;
+    border-radius: 6px;
+    line-height: 40px;
+    text-align: center;
+}
+
+
+
+
+
+select {
+    margin-bottom: 3vh;
+}
