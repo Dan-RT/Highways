@@ -1,10 +1,9 @@
     <?php
 
+    session_start();
 
     require ('php/portion.php');
     require ('php/portion_manager.php');
-
-
 
     $data = ([
         "code_troncon" => 81
@@ -12,9 +11,6 @@
 
     $tmp = new portion($data);
     $portion_m = new portion_manager();
-
-    //$portion_m->get_societe($tmp);
-
 
 
     ?>
@@ -53,12 +49,11 @@
                 <a href="Liste_villes.php" class="btn btn-block btn-lg btn-primary"><span class="glyphicon glyphicon-align-left"></span> Liste Villes</a>
                 <!--<a href="Liste_deplacement.php" class="btn btn-block btn-lg btn-primary"><span class="glyphicon glyphicon-align-left"></span> Déplacements</a>-->
                 <a href="choix_itinéraire.php" class="btn btn-block btn-lg btn-primary"><span class="glyphicon glyphicon-align-left"></span> Itinéraire</a>
-
-
             </div>
 
         </div>
     </div>
+
 
 
     <script src="js/lib/jquery.min.js"></script>

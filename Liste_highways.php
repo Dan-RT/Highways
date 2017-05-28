@@ -1,5 +1,6 @@
     <?php
 
+    session_start();
     require ('php/highway.php');
     require ('php/highway_manager.php');
 
@@ -62,9 +63,17 @@
                     <th></th>
                     <th></th>
                     <th>
-                        <button name="add_highway" class="btn btn-xs btn-default">
-                            <span class="glyphicon glyphicon-plus"></span>
-                        </button>
+
+                    <?php
+                        if ($_SESSION['connected'] == true) {
+                    ?>
+                            <button name="add_highway" class="btn btn-xs btn-default">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                    <?php
+                    }
+                    ?>
+
                     </th>
 
                 </tr>
@@ -83,9 +92,21 @@
 
                     <tr>
                         <td><?php echo $tmp_highway->code_autoroute(); ?></td>
-                        <td>
-                            <input id="modify_name_highway_<?php echo $tmp_highway->id_autoroute(); ?>" value="<?php echo $tmp_highway->code_autoroute(); ?>">
-                        </td>
+
+                        <?php
+                        if ($_SESSION['connected'] == true) {
+                            ?>
+                            <td>
+                                <input id="modify_name_highway_<?php echo $tmp_highway->id_autoroute(); ?>" value="<?php echo $tmp_highway->code_autoroute(); ?>">
+                            </td>
+                            <?php
+                        } else {
+                        ?>
+                            <td></td>
+                            <?php
+                        }
+                        ?>
+
                         <td></td>
 
                         <td>
@@ -93,15 +114,23 @@
                                 <span class="glyphicon glyphicon-align-left"></span>
                             </button>
 
-                            <button name="modify_highway" value="<?php echo $tmp_highway->id_autoroute(); ?>" class="btn btn-xs btn-default">
-                                <span class="glyphicon glyphicon-pencil"></span>
-                            </button>
 
-                            <button name="remove_highway" value="<?php echo $tmp_highway->id_autoroute(); ?>" class="btn btn-xs btn-default">
-                                <span class="glyphicon glyphicon-remove"></span>
-                            </button>
+                            <?php
+                            if ($_SESSION['connected'] == true) {
+                            ?>
+                                <button name="modify_highway" value="<?php echo $tmp_highway->id_autoroute(); ?>" class="btn btn-xs btn-default">
+                                    <span class="glyphicon glyphicon-pencil"></span>
+                                </button>
 
-                            <button id="submit_modif_highway_<?php echo $tmp_highway->id_autoroute(); ?>" class="btn btn-xs btn-default button_submit"><span class="glyphicon glyphicon-ok"></span></button>
+                                <button name="remove_highway" value="<?php echo $tmp_highway->id_autoroute(); ?>" class="btn btn-xs btn-default">
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                </button>
+
+                                <button id="submit_modif_highway_<?php echo $tmp_highway->id_autoroute(); ?>" class="btn btn-xs btn-default button_submit"><span class="glyphicon glyphicon-ok"></span></button>
+
+                                <?php
+                            }
+                            ?>
 
                         </td>
 

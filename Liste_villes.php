@@ -44,9 +44,16 @@ $cities = $ville_m->getList();
             <th>Code Postal</th>
             <th></th>
             <th>
-                <button name="add_highway" class="btn btn-xs btn-default">
-                    <span class="glyphicon glyphicon-plus"></span>
-                </button>
+                <?php
+                if ($_SESSION['connected'] == true) {
+                    ?>
+                    <button name="add_highway" class="btn btn-xs btn-default">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+                    <?php
+                }
+                ?>
+
             </th>
 
         </tr>
@@ -64,25 +71,44 @@ $cities = $ville_m->getList();
             <tr>
                 <td><?php echo $tmp_city->nom_ville(); ?></td>
                 <td>
-                    <input id="modify_name_highway_<?php echo $tmp_city->id_city(); ?>" value="<?php echo $tmp_city->nom_ville(); ?>">
-                </td>
+                    <?php
+                    if ($_SESSION['connected'] == true) {
+                        ?>
+                        <input id="modify_name_highway_<?php echo $tmp_city->id_city(); ?>" value="<?php echo $tmp_city->nom_ville(); ?>">
+                        <?php
+                    }
+                    ?>
+                 </td>
                 <td><?php echo $tmp_city->code_postal(); ?></td>
 
                 <td>
-                    <input id="modify_code_highway_<?php echo $tmp_city->id_city(); ?>" value="<?php echo $tmp_city->code_postal(); ?>">
+                    <?php
+                    if ($_SESSION['connected'] == true) {
+                        ?>
+                        <input id="modify_code_highway_<?php echo $tmp_city->id_city(); ?>" value="<?php echo $tmp_city->code_postal(); ?>">
+                        <?php
+                    }
+                    ?>
                 </td>
 
                 <td>
+                    <?php
+                    if ($_SESSION['connected'] == true) {
+                        ?>
+                        <button name="modify_highway" value="<?php echo $tmp_city->id_city(); ?>" class="btn btn-xs btn-default">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </button>
 
-                    <button name="modify_highway" value="<?php echo $tmp_city->id_city(); ?>" class="btn btn-xs btn-default">
-                        <span class="glyphicon glyphicon-pencil"></span>
-                    </button>
+                        <button name="remove_highway" value="<?php echo $tmp_city->id_city(); ?>" class="btn btn-xs btn-default">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </button>
 
-                    <button name="remove_highway" value="<?php echo $tmp_city->id_city(); ?>" class="btn btn-xs btn-default">
-                        <span class="glyphicon glyphicon-remove"></span>
-                    </button>
+                        <button id="submit_modif_highway_<?php echo $tmp_city->id_city(); ?>" class="btn btn-xs btn-default button_submit"><span class="glyphicon glyphicon-ok"></span></button>
 
-                    <button id="submit_modif_highway_<?php echo $tmp_city->id_city(); ?>" class="btn btn-xs btn-default button_submit"><span class="glyphicon glyphicon-ok"></span></button>
+                        <?php
+                    }
+                    ?>
+
 
                 </td>
 

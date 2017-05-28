@@ -29,7 +29,7 @@
     <div class="container-fullwidth container-fluid " id="style_container">
 
         <div class="row">
-            <div class="col-lg-offset-3 col-sm-8">
+            <div class="col-lg-offset-4 col-sm-8">
                 <h1>Calculez votre itinéraire :</h1>
             </div>
         </div>

@@ -1,5 +1,6 @@
     <?php
 
+    session_start();
 
     require ('php/portion.php');
     require ('php/portion_manager.php');
@@ -42,9 +43,15 @@
                     <th>Prix</th>
                     <th>Société </th>
                     <th>
-                        <button name="add_portion" class="btn btn-xs btn-default">
-                            <span class="glyphicon glyphicon-plus"></span>
-                        </button>
+                        <?php
+                        if ($_SESSION['connected'] == true) {
+                            ?>
+                            <button name="add_portion" class="btn btn-xs btn-default">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                            <?php
+                        }
+                        ?>
                     </th>
                 </tr>
                 </thead>
@@ -147,10 +154,16 @@
                                 </td>
 
                                 <td>
-                                    <input name="id_autoroute_hidden" class="hidden" value="<?php echo $id_hgw; ?>">
-                                    <button name="modify_portion" value="<?php echo $tmp_portion->code_troncon(); ?>" class=" btn btn-xs btn-default"><span class="glyphicon glyphicon-pencil"></span></button>
-                                    <button name="remove_portion" value="<?php echo $tmp_portion->code_troncon(); ?>" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-remove"></span></button>
-                                </td>
+                                    <?php
+                                    if ($_SESSION['connected'] == true) {
+                                        ?>
+                                        <input name="id_autoroute_hidden" class="hidden" value="<?php echo $id_hgw; ?>">
+                                        <button name="modify_portion" value="<?php echo $tmp_portion->code_troncon(); ?>" class=" btn btn-xs btn-default"><span class="glyphicon glyphicon-pencil"></span></button>
+                                        <button name="remove_portion" value="<?php echo $tmp_portion->code_troncon(); ?>" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-remove"></span></button>
+                                        <?php
+                                    }
+                                    ?>
+                                    </td>
                         </tr>
 
 

@@ -21,8 +21,13 @@ h1 {
     text-align: center;
 }
 
+#style_container{
+    margin-top: 13vh;
+}
 
-
+.form_inside {
+    margin-top: 3vh;
+}
 
 
 select {
