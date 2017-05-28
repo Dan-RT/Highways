@@ -131,6 +131,7 @@ $cities = $ville_m->getList();
 </div>
 
 
+<?php include ("footer.php"); ?>
 
 
 
