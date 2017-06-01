@@ -11,11 +11,11 @@
 
 .logo_site {
 	font-size: x-large;
-	margin-left: 36vw;
+	margin-left: 16vw;
 }
 
 .first_element_nav {
-	margin-left: 19vw;
+	margin-left: 10vw;
 }
 
 nav li {
@@ -35,7 +35,7 @@ footer {
 
 footer ul {
 	margin-bottom: 0vh;
-	margin-left: 25vw;
+	margin-left: 30vw;
 }
 
 .footer_list li {
@@ -62,7 +62,8 @@ footer ul {
 
 .user_name {
 	padding-top: 1.7vh;
-	margin-right: 1vh;
+	margin-right: 1vw;
+	margin-left: 2vw;
 	color: white;
 }
 

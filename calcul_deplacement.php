@@ -45,6 +45,7 @@
         $troncon_precised = $highway_m->get_troncons($tmp_autoroute);
 
         $flag = 0;
+        $ferme = 0;
         $nb_portion = 1;
 
         foreach ($troncon_precised as $tmp_troncon) {
@@ -58,19 +59,21 @@
 
             if ($_POST["starting_city"] == $exit_depart->id_city() || $_POST["starting_city"] == $exit_arrivee->id_city()) {
 
-                /*echo " Autoroute : " . $tmp_autoroute->id_autoroute();
-                echo " Troncon : " . $tmp_troncon->code_troncon();
-                echo " Ville : " . $_POST["starting_city"] . " trouvée";*/
-                $flag++;
+                if ($tmp_troncon->ouvert) {
+                    $flag++;
+                    $ferme++;
+                }
+
 
             }
 
             if ($_POST["arriving_city"] == $exit_depart->id_city() || $_POST["arriving_city"] == $exit_arrivee->id_city()) {
 
-                /*echo " Autoroute : " . $tmp_autoroute->id_autoroute();
-                echo " Troncon : " . $tmp_troncon->code_troncon();
-                echo " Ville : " . $_POST["arriving_city"] . " trouvée";*/
-                $flag++;
+                if ($tmp_troncon->ouvert) {
+                    $flag++;
+
+                }
+
             }
 
 
@@ -81,12 +84,16 @@
             ?>
 
             <div>
-                <?php echo "  Itinéraire trouvé sur l'autoroute " . $tmp_autoroute->code_autoroute() . " long de " . $nb_portion . " troncons.";?>
+                <?php echo "  Itinéraire trouvé sur l'autoroute " . $tmp_autoroute->code_autoroute() . " long de " . $nb_portion . " troncon(s)."
+
+                ;?>
             </div>
     <?php
 
+
             $flag_general++;
         }
+        $ferme = 0;
         $flag = 0;
         $nb_portion = 1;
 
@@ -98,7 +105,7 @@
 
 
     if ($flag_general == 0) {
-        echo "Aucun itinéraire trouvé sur le réseau d'autoroutes.";
+        echo "Aucun itinéraire ouvert a été trouvé sur le réseau d'autoroutes. ";
     }
 
 

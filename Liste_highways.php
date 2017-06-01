@@ -33,7 +33,7 @@
     <head>
 
         <meta charset="utf-8" />
-        <title>Liste Autoroute</title>
+        <title>Liste Autoroutes</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="CSS/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="CSS/Liste_highways.css"/>

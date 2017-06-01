@@ -33,8 +33,8 @@ class highway_exit_manager {
     }
 
     public function delete(highway_exit $sortie) {
-        echo "sortie : " . $sortie->numero_sortie();
-        echo "DELETEEEEEE";
+        //echo "sortie : " . $sortie->numero_sortie();
+        //echo "DELETEEEEEE";
         $this->_db->exec('DELETE FROM Sortie WHERE numero_sortie = '.$sortie->numero_sortie());
     }
 
@@ -76,7 +76,7 @@ class highway_exit_manager {
 
             return new highway_exit($data);
         } else {
-            echo $numero . " n'existe pas dans la table.";
+            //echo $numero . " n'existe pas dans la table.";
             return null;
         }
     }
@@ -91,7 +91,7 @@ class highway_exit_manager {
 
             return new highway_exit($data);
         } else {
-            echo $numero . " n'existe pas dans la table.";
+            //echo $numero . " n'existe pas dans la table.";
             return null;
         }
     }

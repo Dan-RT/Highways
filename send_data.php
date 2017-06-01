@@ -73,10 +73,6 @@
                     $id_tmp = $tmp->id_city();
                     $id_autoroute_tmp = $tmp->id_autoroute();
 
-                    /*echo " Code : " . $tmp->code_troncon();
-                    echo " id_city : " . $tmp->id_city() . " : " . $_POST['starting_city'];
-                    echo " id_autoroute : " . $tmp->id_autoroute() . " : " . $_POST['id_autoroute'];*/
-                    //echo " numero_sortie : " . $tmp->numero_sortie();
 
                     if ($id_tmp == $_POST['starting_city'] && $code_tmp != null && $id_autoroute_tmp == $_POST['id_autoroute']) {
                          $city_m->delete($tmp);
@@ -84,14 +80,23 @@
                 }
 
 
+                echo "Veuillez recharger la page.";
                 foreach ($exits as $tmp) {
+
+
                     $code_tmp = $tmp->code_troncon_arrivee();
                     $id_tmp = $tmp->id_city();
                     $id_autoroute_tmp = $tmp->id_autoroute();
+
                     if ($id_tmp == $_POST['arriving_city'] && $code_tmp != null && $id_autoroute_tmp == $_POST['id_autoroute']) {
-                        $city_m->delete($tmp);
+                        if ($tmp!= null){
+                            $city_m->delete($tmp);
+                        }
+
                     }
                 }
+
+
 
 
 
@@ -119,7 +124,7 @@
 
                 $city_m->add($tmp_city_2);
 
-                echo "TEST";
+
 
 
                 /*     Update Toll     */
@@ -135,7 +140,7 @@
                     //$peage = $peage_m->get_by_troncon($_POST['code_troncon']);
 
                     $peage = new toll($data_5);
-                    echo "TEST";
+
                     //$peage->setId_societe($_POST['company']);
 
                     $peage_m->add($peage);
@@ -145,8 +150,6 @@
                     if ($peage != null) {
                         $peage_m->delete($peage);
                     }
-
-
                 }
 
 
@@ -241,10 +244,10 @@
                 $city_m->add($tmp_city_2);
 
 
+
                 /*     Update Toll     */
 
                 if ($_POST['payant'] != 0) {
-                    echo "TEST";
                     $data_2 = ([
                         "code_troncon" => $tmp_troncon->code_troncon(),
                         "id_societe" => $_POST['company']

@@ -86,7 +86,7 @@ class toll_manager {
                 return new toll($data);
 
             } else {
-                echo $code . " n'existe pas dans la table.";
+                //echo $code . " n'existe pas dans la table.";
                 return null;
             }
 
@@ -108,12 +108,12 @@ class toll_manager {
                 return new toll($data);
 
             } else {
-                echo $code . " n'existe pas dans la table.";
+                //echo $code . " n'existe pas dans la table.";
                 return null;
             }
 
         } else {
-            echo "Wrong format, needs integer.";
+            //echo "Wrong format, needs integer.";
             return null;
         }
     }
